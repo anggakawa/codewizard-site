@@ -7,38 +7,38 @@
       "paper": {
         "role": "neutral",
         "displayName": "Paper",
-        "canonical": "#ececeb",
-        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#d5d5d3", "#ececeb"]
+        "canonical": "#fcfcfb",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#e6e6e4", "#fcfcfb"]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
         "canonical": "#1a1a1a",
-        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#ececeb"]
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#fcfcfb"]
       },
       "caption": {
         "role": "neutral",
         "displayName": "Caption",
         "canonical": "#4a4a4a",
-        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#5e5e5e", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#ececeb"]
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#5e5e5e", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#fcfcfb"]
       },
       "dust": {
         "role": "neutral",
         "displayName": "Dust",
         "canonical": "#2a2a2a",
-        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#ececeb"]
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#fcfcfb"]
       },
       "hairline": {
         "role": "neutral",
         "displayName": "Hairline",
-        "canonical": "#d5d5d3",
-        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#d5d5d3", "#ececeb"]
+        "canonical": "#e6e6e4",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#e6e6e4", "#fcfcfb"]
       },
       "row-wash": {
         "role": "neutral",
         "displayName": "Row wash",
-        "canonical": "#e2e2e0",
-        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#bdbdbd", "#e2e2e0", "#ececeb"]
+        "canonical": "#f3f3f1",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#bdbdbd", "#f3f3f1", "#fcfcfb"]
       }
     },
     "typographyMeta": {
@@ -107,14 +107,14 @@
       "name": "Specification list",
       "kind": "custom",
       "refersTo": "product-row",
-      "description": "Platform, market, and price beside the product name.",
-      "html": "<dl class=\"ds-specs\"><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Bulanan</dt><dd>sekitar Rp19.000</dd></div><div><dt>Tahunan</dt><dd>sekitar Rp150.000</dd></div></dl>",
+      "description": "Platform and market beside the product name.",
+      "html": "<dl class=\"ds-specs\"><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Pasar</dt><dd>IDX/BEI</dd></div></dl>",
       "css": ".ds-specs { margin: 0; font-family: var(--font-sans, 'Instrument Sans', sans-serif); color: var(--color-ink, #141414); } .ds-specs div { display: grid; grid-template-columns: 5.8rem minmax(0, 1fr); gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--color-rule, #e3e3e3); } .ds-specs dt { color: var(--color-secondary, #454545); font-size: 0.875rem; } .ds-specs dd { margin: 0; font-variant-numeric: tabular-nums; }"
     }
   ],
   "narrative": {
     "northStar": "The Quiet Globe",
-    "overview": "The first screen is gray paper. Codewizard’s name sits in soft black on the left, then a sentence and a phrase that swaps: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black and blurred slightly. Pixel dust drifts through the hero.\n\nThe product list continues on the same paper. Chartwizard is the entry that is actually published. The footer is one copyright line. There is no contact block yet.\n\nThe palette is paper, ink, and gray. Corners stay square. Instrument Sans does every job.",
+    "overview": "The first screen is almost-white paper. Codewizard’s name sits in soft black on the left, then a sentence and a phrase that swaps: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black and blurred slightly. Pixel dust drifts through the hero.\n\nThe product list continues on the same paper. Chartwizard is the entry that is actually published. The footer is one copyright line. There is no contact block yet.\n\nThe palette is paper, ink, and gray. Corners stay square. Instrument Sans does every job.",
     "keyCharacteristics": [
       "A full-viewport paper hero, then the product list on the same field",
       "One soft-black wireframe globe, slightly blurred, paused off-screen and when the tab is hidden",

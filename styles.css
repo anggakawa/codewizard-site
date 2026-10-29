@@ -7,18 +7,18 @@
 }
 
 :root {
-  --color-paper: #ececeb;
+  --color-paper: #fcfcfb;
   --color-ink: #1a1a1a;
   --color-secondary: #4a4a4a;
-  --color-rule: #d5d5d3;
-  --color-hover: #e2e2e0;
-  --color-select: #d2d2d0;
+  --color-rule: #e6e6e4;
+  --color-hover: #f3f3f1;
+  --color-select: #e8e8e6;
   --color-dust: #2a2a2a;
 
   --font-sans: "Instrument Sans", "Segoe UI", sans-serif;
   --font-size-display: clamp(3.1rem, 7vw, 5.5rem);
   --font-size-headline: clamp(2.2rem, 6vw, 3.6rem);
-  --font-size-title: clamp(1.8rem, 3vw, 2.4rem);
+  --font-size-title: clamp(2.2rem, 4.4vw, 3.4rem);
   --font-size-lead: clamp(1.2rem, 2vw, 1.45rem);
   --font-size-phrase: clamp(1.7rem, 5vw, 3rem);
   --font-size-body: 1.0625rem;
@@ -28,11 +28,11 @@
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
   --line-height-display: 0.96;
-  --line-height-title: 1.12;
+  --line-height-title: 1.04;
   --line-height-lead: 1.45;
   --line-height-body: 1.55;
   --letter-spacing-display: -0.045em;
-  --letter-spacing-title: -0.03em;
+  --letter-spacing-title: -0.035em;
   --letter-spacing-lead: -0.015em;
   --letter-spacing-action: -0.02em;
 
@@ -48,12 +48,21 @@
   --space-10: 4rem;
   --space-sheet-x: clamp(1.25rem, 4vw, 3.5rem);
   --space-section: clamp(4rem, 8vw, 6.5rem);
+  /* One left edge for the header, the hero copy, and the product list. */
+  --space-gutter: max(var(--space-sheet-x), calc((100vw - 76rem) / 2));
+  --height-header: 4.5rem;
 
   --radius-none: 0;
 
   --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-leave: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-swap: cubic-bezier(0.65, 0, 0.35, 1);
   --duration-feedback: 150ms;
   --duration-state: 180ms;
+  --duration-wash: 520ms;
+  --duration-wipe: 560ms;
+  --duration-entrance: 1100ms;
+  --duration-reveal: 900ms;
 
   color-scheme: light;
 }
@@ -65,7 +74,8 @@
 }
 
 html {
-  scrollbar-color: #bdbdbd transparent;
+  scrollbar-color: #c9c9c7 transparent;
+  scroll-padding-top: var(--height-header);
 }
 
 body {
@@ -78,6 +88,7 @@ body {
   line-height: var(--line-height-body);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   caret-color: var(--color-ink);
 }
 
@@ -94,6 +105,7 @@ body {
 a {
   text-underline-offset: 0.22em;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .lewati {
@@ -120,26 +132,44 @@ a {
   background: var(--color-paper);
   color: var(--color-ink);
   border-radius: var(--radius-none);
-  z-index: 3;
+  z-index: 20;
 }
 
 .lebar {
-  padding-left: max(var(--space-sheet-x), calc((100vw - 76rem) / 2));
-  padding-right: var(--space-sheet-x);
+  padding-left: var(--space-gutter);
+  padding-right: var(--space-gutter);
 }
 
-.hero {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
-  grid-template-rows: auto 1fr;
-  align-items: center;
-  min-height: 100svh;
-  padding: 0 var(--space-sheet-x) var(--space-8);
-  background: var(--color-paper);
-  color: var(--color-ink);
-  overflow: hidden;
+/* The underline that leaves to the right and comes back from the left.
+   Shared by the hero link, the nav, and the visit link. */
+.garis {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
 }
+
+@keyframes wipe {
+  0% {
+    background-position: 100% 100%;
+    background-size: 100% 1px;
+  }
+  45% {
+    background-position: 100% 100%;
+    background-size: 0 1px;
+  }
+  55% {
+    background-position: 0 100%;
+    background-size: 0 1px;
+  }
+  100% {
+    background-position: 0 100%;
+    background-size: 100% 1px;
+  }
+}
+
+/* Header */
 
 .kepala {
   position: relative;
@@ -149,13 +179,35 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: var(--space-3) var(--space-6);
-  grid-column: 1 / -1;
-  min-height: 4.5rem;
+  min-height: var(--height-header);
 }
 
 .kepala-terang {
   position: relative;
   color: var(--color-ink);
+}
+
+.kepala-tetap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding-left: var(--space-gutter);
+  padding-right: var(--space-gutter);
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 400ms var(--ease-arrive),
+    border-color 400ms var(--ease-arrive),
+    -webkit-backdrop-filter 400ms var(--ease-arrive),
+    backdrop-filter 400ms var(--ease-arrive);
+}
+
+.kepala-tetap.tergulir {
+  background-color: rgb(252 252 251 / 0.82);
+  border-bottom-color: var(--color-rule);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
 }
 
 .nama {
@@ -190,23 +242,42 @@ nav a {
   font-size: var(--font-size-nav);
   text-decoration: none;
   border-radius: var(--radius-none);
-  transition: opacity var(--duration-feedback) linear;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 calc(100% - 0.6rem);
+  background-size: 0 1px;
+  transition:
+    opacity var(--duration-feedback) linear,
+    background-size 420ms var(--ease-arrive);
 }
 
 nav a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+  background-size: calc(100% - 0.5rem) 1px;
+  background-position: 0.25rem calc(100% - 0.6rem);
 }
 
 nav a:active {
   opacity: 0.6;
 }
 
+/* Hero */
+
+.hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(280px, 1.08fr);
+  align-items: center;
+  min-height: 100svh;
+  padding: var(--height-header) var(--space-gutter) var(--space-8);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  overflow: hidden;
+}
+
 .hero-isi {
   position: relative;
   z-index: 1;
   grid-column: 1;
-  grid-row: 2;
   max-width: 36rem;
   padding-top: var(--space-6);
   padding-bottom: var(--space-8);
@@ -222,6 +293,17 @@ h1 {
   text-wrap: balance;
 }
 
+/* A line that rises out of its own mask. */
+.masuk {
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.masuk > span {
+  display: block;
+}
+
 .pengantar {
   max-width: 28em;
   margin: var(--space-6) 0 0;
@@ -233,11 +315,14 @@ h1 {
 }
 
 .kata-baris {
-  margin: var(--space-3) 0 0;
+  margin: var(--space-2) 0 0;
   overflow: hidden;
   font-size: var(--font-size-phrase);
   line-height: 1.15;
   min-height: 1.2em;
+  /* Room for the descenders in “deploy” and “happen”. */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
 }
 
 .kata {
@@ -248,12 +333,54 @@ h1 {
   letter-spacing: var(--letter-spacing-title);
   line-height: 1.15;
   white-space: nowrap;
-  transition: opacity 380ms var(--ease-arrive), transform 380ms var(--ease-arrive);
 }
 
-.kata.sembunyi {
-  opacity: 0;
-  transform: translateY(-0.4em);
+.huruf {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* Three marks under the phrase: which word is up, and how long it stays. */
+.jejak {
+  display: flex;
+  gap: 6px;
+  margin-top: var(--space-4);
+}
+
+.jejak span {
+  position: relative;
+  display: block;
+  width: 1.75rem;
+  height: 2px;
+  background: var(--color-rule);
+  overflow: hidden;
+}
+
+.jejak span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-ink);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.jejak span.selesai::after {
+  transform: scaleX(1);
+}
+
+.jejak span.aktif::after {
+  animation: isi var(--tahan, 2800ms) linear forwards;
+}
+
+@keyframes isi {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+html:not(.js) .jejak {
+  display: none;
 }
 
 .sr {
@@ -268,23 +395,25 @@ h1 {
   border: 0;
 }
 
+.hero-aksi {
+  margin: var(--space-7) 0 0;
+}
+
 .hero-lanjut {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  margin-top: var(--space-7);
   color: var(--color-ink);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-action);
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-ink);
   border-radius: var(--radius-none);
-  transition: opacity var(--duration-feedback) linear, transform var(--duration-feedback) var(--ease-arrive);
+  transition: opacity var(--duration-feedback) linear, transform 300ms var(--ease-arrive);
 }
 
 .hero-lanjut:hover,
 .hero-lanjut:focus-visible {
   transform: translateX(3px);
+  animation: wipe var(--duration-wipe) var(--ease-swap);
 }
 
 .hero-lanjut:active {
@@ -300,33 +429,90 @@ h1 {
   height: 100%;
   display: block;
   pointer-events: none;
-  filter: blur(1px);
+  filter: blur(0.6px);
 }
 
 .bola-ruang {
   display: none;
 }
 
+/* Product list */
+
 .daftar {
   padding-top: var(--space-section);
-  padding-bottom: var(--space-8);
+  padding-bottom: var(--space-section);
   background: var(--color-paper);
 }
 
-.produk {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.8fr);
-  gap: var(--space-6) var(--space-9);
-  padding: var(--space-8) 0;
-  border-top: 1px solid var(--color-rule);
-  border-radius: var(--radius-none);
-  position: relative;
-  transition: background-color var(--duration-state) var(--ease-arrive);
+.daftar-kepala {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-6);
+  padding-bottom: var(--space-6);
 }
 
-.produk:has(.buka:hover),
-.produk:has(.buka:focus-visible) {
+.daftar-kepala h2 {
+  margin: 0;
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-title);
+  line-height: var(--line-height-title);
+}
+
+.produk {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(16rem, 0.8fr);
+  gap: var(--space-7) var(--space-10);
+  padding: var(--space-9) 0;
+  border-radius: var(--radius-none);
+}
+
+.produk + .produk {
+  margin-top: 0;
+}
+
+/* A product's own moving picture, across the top of its row (chart.js). */
+.grafik {
+  grid-column: 1 / -1;
+  display: block;
+  width: 100%;
+  height: clamp(10rem, 18vw, 16rem);
+  margin-bottom: var(--space-2);
+  pointer-events: none;
+}
+
+/* Top hairline, drawn in from the left when the row arrives. */
+.produk::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-rule);
+  transform-origin: left center;
+}
+
+/* Row wash: grows from the left under the pointer, recedes to the right. */
+.produk::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1px calc(var(--space-5) * -1) 0;
   background: var(--color-hover);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform var(--duration-wash) var(--ease-arrive);
+}
+
+.produk:has(.buka:hover)::after,
+.produk:has(.buka:focus-visible)::after {
+  transform: scaleX(1);
+  transform-origin: left center;
 }
 
 .produk:has(.buka):focus-within {
@@ -338,25 +524,30 @@ h1 {
   outline: none;
 }
 
-.produk h2 {
-  margin: 0 0 var(--space-3);
+.produk h3 {
+  margin: 0 0 var(--space-4);
   font-size: var(--font-size-title);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-title);
   line-height: var(--line-height-title);
   text-wrap: balance;
+  transition: translate var(--duration-wash) var(--ease-arrive);
+}
+
+.produk:has(.buka:hover) h3,
+.produk:has(.buka:focus-visible) h3 {
+  /* translate, not transform, so the list reveal cannot override it. */
+  translate: 3px 0;
 }
 
 .produk p {
-  max-width: 38em;
+  max-width: 34em;
   margin: 0;
-}
-
-.produk-meta {
-  align-self: start;
+  text-wrap: pretty;
 }
 
 .spesifikasi {
+  align-self: start;
   margin: 0;
 }
 
@@ -364,13 +555,19 @@ h1 {
   display: grid;
   grid-template-columns: 5.8rem minmax(0, 1fr);
   gap: var(--space-3);
-  padding: var(--space-2) 0;
+  padding: var(--space-3) 0;
   border-bottom: 1px solid var(--color-rule);
+}
+
+.spesifikasi div:first-child {
+  padding-top: 0;
 }
 
 .spesifikasi dt {
   color: var(--color-secondary);
   font-size: var(--font-size-label);
+  line-height: var(--line-height-body);
+  padding-top: 0.1em;
 }
 
 .spesifikasi dd {
@@ -379,11 +576,11 @@ h1 {
 }
 
 .buka {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-1);
-  margin-top: var(--space-5);
+  margin-top: var(--space-7);
   min-height: 2.75rem;
   color: var(--color-ink);
   text-decoration: none;
@@ -394,13 +591,14 @@ h1 {
   display: inline-block;
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-action);
-  border-bottom: 1px solid var(--color-ink);
-  transition: transform var(--duration-feedback) var(--ease-arrive), opacity var(--duration-feedback) linear;
+  padding-bottom: 1px;
+  transition: transform 300ms var(--ease-arrive), opacity var(--duration-feedback) linear;
 }
 
 .buka:hover .buka-aksi,
 .buka:focus-visible .buka-aksi {
   transform: translateX(3px);
+  animation: wipe var(--duration-wipe) var(--ease-swap);
 }
 
 .buka:active .buka-aksi {
@@ -427,6 +625,8 @@ h1 {
   color: var(--color-secondary);
 }
 
+/* 404 */
+
 .halaman-hilang {
   padding-top: clamp(4rem, 12vw, 8rem);
   padding-bottom: var(--space-10);
@@ -447,6 +647,8 @@ h1 {
   margin-top: var(--space-7);
 }
 
+/* Footer */
+
 .kolofon {
   padding-top: var(--space-6);
   padding-bottom: var(--space-6);
@@ -459,21 +661,133 @@ h1 {
   margin: 0;
 }
 
+/* Motion: one entrance for the hero, one reveal for the list. */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes naik {
+    from {
+      transform: translateY(105%);
+    }
+    to {
+      transform: none;
+    }
+  }
+
+  @keyframes muncul {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes pudar {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .kepala-tetap {
+    animation: pudar 900ms var(--ease-arrive) 250ms both;
+  }
+
+  .masuk > span {
+    animation: naik var(--duration-entrance) var(--ease-arrive) both;
+  }
+
+  .masuk-1 > span {
+    animation-delay: 120ms;
+  }
+
+  .masuk-2 > span {
+    animation-delay: 260ms;
+  }
+
+  .kata-baris > .kata {
+    animation: naik var(--duration-entrance) var(--ease-arrive) 400ms both;
+  }
+
+  .jejak {
+    animation: pudar 700ms linear 700ms both;
+  }
+
+  .hero-aksi {
+    animation: muncul 900ms var(--ease-arrive) 640ms both;
+  }
+
+  /* The list reveal waits for site.js to mark rows as ready, so the list
+     is never hidden when the script does not run. */
+  .js .siap .daftar-kepala > *,
+  .js .siap.produk .produk-isi > *,
+  .js .siap.produk .spesifikasi > div {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity var(--duration-reveal) var(--ease-arrive),
+      transform var(--duration-reveal) var(--ease-arrive);
+  }
+
+  .js .siap.produk::before {
+    transform: scaleX(0);
+    transition: transform 1200ms var(--ease-arrive);
+  }
+
+  .js .siap.tampak .daftar-kepala > *,
+  .js .siap.tampak.produk .produk-isi > *,
+  .js .siap.tampak.produk .spesifikasi > div {
+    opacity: 1;
+    transform: none;
+  }
+
+  .js .siap.tampak.produk::before {
+    transform: scaleX(1);
+  }
+
+  .js .siap.produk .produk-isi > :nth-child(1) {
+    transition-delay: 120ms;
+  }
+
+  .js .siap.produk .produk-isi > :nth-child(2) {
+    transition-delay: 200ms;
+  }
+
+  .js .siap.produk .produk-isi > :nth-child(3) {
+    transition-delay: 280ms;
+  }
+
+  .js .siap.produk .spesifikasi > div {
+    transition-delay: calc(240ms + var(--i, 0) * 60ms);
+  }
+
+  /* After the reveal, hover moves the title on its own clock. */
+  .js .siap.tampak.produk .produk-isi > h3 {
+    transition:
+      opacity var(--duration-reveal) var(--ease-arrive) 120ms,
+      transform var(--duration-reveal) var(--ease-arrive) 120ms,
+      translate var(--duration-wash) var(--ease-arrive);
+  }
+}
+
 @media (max-width: 720px) {
   .hero {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto;
     align-items: stretch;
-  }
-
-  .kepala {
-    grid-column: 1;
-    grid-row: 1;
   }
 
   .hero-isi {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
     max-width: none;
     padding-top: var(--space-4);
     padding-bottom: var(--space-8);
@@ -482,33 +796,43 @@ h1 {
   .bola-ruang {
     display: block;
     grid-column: 1;
-    grid-row: 2;
-    height: 46vh;
+    grid-row: 1;
+    height: 42vh;
     min-height: 240px;
   }
 
   .produk {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-7);
+    padding: var(--space-8) 0;
+  }
+
+  .produk::after {
+    inset: 1px calc(var(--space-sheet-x) * -1) 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kata,
-  .kata.sembunyi {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
   .hero-lanjut,
   .hero-lanjut:hover,
   .hero-lanjut:focus-visible,
   .hero-lanjut:active,
   .buka:hover .buka-aksi,
   .buka:focus-visible .buka-aksi,
-  .buka:active .buka-aksi {
+  .buka:active .buka-aksi,
+  .produk:has(.buka:hover) h3,
+  .produk:has(.buka:focus-visible) h3 {
     transform: none;
+    translate: none;
+    animation: none;
+  }
+
+  .produk::after {
+    transition: none;
+  }
+
+  .jejak {
+    display: none;
   }
 }
 
@@ -519,10 +843,13 @@ h1 {
     min-height: 0;
   }
 
-  .bola {
-    display: none;
+  .kepala-tetap {
+    position: static;
   }
 
+  .bola,
+  .grafik,
+  .jejak,
   .lewati {
     display: none;
   }

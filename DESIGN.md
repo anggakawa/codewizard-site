@@ -1,14 +1,14 @@
 ---
 name: Codewizard
-description: Monochrome studio page on gray paper, with a soft black wireframe globe.
+description: Monochrome studio page on almost-white paper, with a soft black wireframe globe.
 colors:
-  paper: "#ececeb"
+  paper: "#fcfcfb"
   ink: "#1a1a1a"
   caption: "#4a4a4a"
   dust: "#2a2a2a"
-  hairline: "#d5d5d3"
-  row-wash: "#e2e2e0"
-  selection: "#d2d2d0"
+  hairline: "#e6e6e4"
+  row-wash: "#f3f3f1"
+  selection: "#e8e8e6"
 typography:
   display:
     fontFamily: "Instrument Sans, Segoe UI, sans-serif"
@@ -98,9 +98,9 @@ components:
 
 **Creative North Star: "The Quiet Globe"**
 
-The first screen is gray paper, a little off white. Codewizard’s name sits in soft black on the left. Under it, one sentence, then a word that leaves and the next word arrives: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black, with a little blur. Small square specks drift through the hero.
+The first screen is almost white, with the faintest warmth. Codewizard’s name sits in soft black on the left. Under it, one sentence, then a word that leaves and the next word arrives: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black, with a little blur. Small square specks drift through the hero.
 
-The product list continues on the same paper. Chartwizard is the entry that is actually published: platform, market, price, and the link to its subdomain, in the same block. The footer is one copyright line. There is no contact block yet.
+The product list continues on the same paper. Chartwizard is the entry that is actually published: platform, market, and the link to its subdomain, in the same block. Plan and prices are left to the product’s own site. The footer is one copyright line. There is no contact block yet.
 
 The palette is paper, ink, and gray. Corners stay square. Instrument Sans does every job.
 
@@ -120,17 +120,17 @@ Black, white, and the grays between them. Hue does not carry meaning.
 
 ### Primary
 
-There is no chromatic primary. Paper (`#ececeb`, `--color-paper`) is the field for the hero and the list: white with a little gray. Ink (`#1a1a1a`, `--color-ink`) is the type and the globe.
+There is no chromatic primary. Paper (`#fcfcfb`, `--color-paper`) is the field for the hero and the list: almost pure white, with the faintest warmth. Ink (`#1a1a1a`, `--color-ink`) is the type and the globe.
 
 ### Neutral
 
-- **Paper** (`#ececeb`, `--color-paper`): The whole page, including the hero and the 404 page.
+- **Paper** (`#fcfcfb`, `--color-paper`): The whole page, including the hero and the 404 page.
 - **Ink** (`#1a1a1a`, `--color-ink`): Headings, the swapping word, actions, and the globe. Focus rings use `currentColor`.
 - **Caption** (`#4a4a4a`, `--color-secondary`): The hero sentence, spec labels, the domain, the footer, and the 404 explanation.
 - **Dust** (`#2a2a2a`, `--color-dust`): Pixel specks in the hero, drawn at low alpha.
-- **Hairline** (`#d5d5d3`, `--color-rule`): Rules in the product list and above the footer.
-- **Row wash** (`#e2e2e0`, `--color-hover`): A live product row under the pointer or keyboard.
-- **Selection** (`#d2d2d0`): Text selection.
+- **Hairline** (`#e6e6e4`, `--color-rule`): Rules in the product list and above the footer.
+- **Row wash** (`#f3f3f1`, `--color-hover`): A live product row under the pointer or keyboard.
+- **Selection** (`#e8e8e6`): Text selection.
 
 The globe is soft black at varying opacity, then blurred by less than a pixel. Back points are faint; front points are darker and larger. That is depth, not a second color.
 
@@ -142,7 +142,7 @@ The globe is soft black at varying opacity, then blurred by less than a pixel. B
 
 **Display Font:** Instrument Sans (Segoe UI, sans-serif)
 **Body Font:** Instrument Sans
-**Label/Mono Font:** none. Prices use the same face with tabular numbers.
+**Label/Mono Font:** none. Spec values use the same face with tabular numbers.
 
 **Character:** One modern grotesque, weights 400 and 600. The hero name is large and tightly tracked. The sentence under it is caption gray. The swapping phrase is ink, smaller than the name, and stays on one line.
 
@@ -205,15 +205,23 @@ Wordmark plus “Produk”, in ink on paper. Hover underlines. Pressed fades. Ea
 
 ### The swapping phrase
 
-Under “A small studio where we…”, the visible phrase is build, then deploy, then make it happen. The current phrase fades up and out; the next fades in. “build” is in the HTML. Reduced motion shows “build, deploy, make it happen” as one still line and does not cycle. A visually hidden sentence carries the full line.
+Under “A small studio where we…”, the visible phrase is build, then deploy, then make it happen. Letters of the current phrase lift out of a mask one after another; the next phrase rises in the same way. Three 2px marks under it show which phrase is up and fill over the 2.8s it stays. “build” is in the HTML. Reduced motion shows “build, deploy, make it happen” as one still line and does not cycle. A visually hidden sentence carries the full line.
 
 ### Globe
 
-A canvas behind the hero. Points sit on a tilted sphere and connect to a few nearby neighbors, drawn in soft black. Pixel dust is small squares on the same canvas, drifting upward, thinner over the type. The canvas is blurred by 1px. The sphere turns at about 0.18 rad/s. Device pixel ratio is capped at 2, and at 1.5 below 720px. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains, including the first phrase.
+A canvas behind the hero. Points sit on a tilted sphere and connect to a few nearby neighbors, drawn in soft black. On load the points start as scattered dust and gather into the sphere over about 2.4s (wall-clock time, so dropped frames do not stretch it), then the links draw out. A few signals run along front-facing links, a short ink stroke with a square head, and leave a fading ring when they arrive. The sphere leans toward a mouse pointer, drifts up as the hero scrolls away, and spins faster for a moment after a scroll. Pixel dust is small squares on the same canvas, drifting upward, thinner over the type. The canvas is blurred by 0.6px. The sphere turns at about 0.18 rad/s. Device pixel ratio is capped at 2, and at 1.5 below 720px. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains, including the first phrase.
+
+### Chart band
+
+The Chartwizard row opens with a canvas across both columns (`chart.js`), the globe’s idea told as a chart. When the row scrolls in, dust gathers into candlesticks, then a seven-candle moving average draws out from the left. Rising candles are hollow and falling candles solid, so one ink is enough. The tape then slides left and new candles enter on the right. Every few seconds a scan line sweeps across; where a candle is the low or high of the five on each side, it leaves corner brackets around five candles and a small square at the turn, then fades. At most three brackets show at once. A mouse over the row draws a dashed crosshair that snaps to a candle. The data is a seeded random walk: no prices, no axis labels, nothing that reads as a capture of the app. It pauses off-screen and when the tab is hidden; reduced motion draws one still, assembled frame.
 
 ### Specification list
 
 Label column 5.8rem in caption gray. Values in ink, tabular numbers, hairline between rows.
+
+### Motion
+
+One entrance and one reveal. On load the header fades in and the hero lines rise out of their masks, staggered over about 0.8s. The product list reveals once as it scrolls in: the hairline draws from the left, then the words and spec rows follow. Links share one underline that leaves to the right and returns from the left on hover. A product row washes in from the left under the pointer. The header gains a paper backdrop with a blur and a hairline once the page scrolls. `prefers-reduced-motion` turns all of this off and shows everything in place.
 
 ## Do's and Don'ts
 
