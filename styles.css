@@ -1,0 +1,471 @@
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("fonts/schibsted-grotesk-latin.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Color */
+  --color-desk: #e4e7eb;
+  --color-sheet: #fbfbfc;
+  --color-ink: #1a1d21;
+  --color-secondary: #314556;
+  --color-rule: #d5dbe3;
+  --color-rule-strong: #b7c0ca;
+  --color-accent: #0f4c6e;
+  --color-hover: #f3f6f8;
+  --color-select: #d3e3ee;
+  --color-shadow: rgba(22, 26, 32, 0.08);
+
+  /* Type */
+  --font-sans: "Schibsted Grotesk", "Segoe UI", sans-serif;
+  --font-size-display: clamp(2.4rem, 8vw, 4.5rem);
+  --font-size-headline: clamp(2.2rem, 6vw, 3.5rem);
+  --font-size-title: clamp(1.65rem, 3vw, 2.15rem);
+  --font-size-lead: clamp(1.2rem, 2vw, 1.45rem);
+  --font-size-body: 1.0625rem;
+  --font-size-nav: 0.9375rem;
+  --font-size-label: 0.875rem;
+  --font-size-mark: 1.25rem;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --line-height-display: 0.96;
+  --line-height-title: 1.15;
+  --line-height-lead: 1.4;
+  --line-height-body: 1.55;
+  --letter-spacing-display: -0.035em;
+  --letter-spacing-title: -0.03em;
+  --letter-spacing-lead: -0.02em;
+  --letter-spacing-action: -0.02em;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 2.5rem;
+  --space-9: 3rem;
+  --space-sheet-x: clamp(1.25rem, 5vw, 4.5rem);
+  --space-sheet-y: clamp(1.75rem, 5vw, 4.25rem);
+  --space-section: clamp(3.25rem, 8vw, 6rem);
+  --space-section-end: clamp(3.5rem, 9vw, 6rem);
+  --space-error: clamp(3rem, 8vw, 5.5rem);
+
+  /* Radius — the sheet stays square; the only curve is the drawn register mark. */
+  --radius-none: 0;
+  --radius-sheet: 0;
+
+  /* Elevation and motion */
+  --shadow-sheet: 0 16px 40px var(--color-shadow);
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-feedback: 150ms;
+  --duration-state: 180ms;
+  --duration-focal: 680ms;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-color: var(--color-rule-strong) transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-desk);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  caret-color: var(--color-accent);
+}
+
+::selection {
+  background: var(--color-select);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+a {
+  text-underline-offset: 0.22em;
+  touch-action: manipulation;
+}
+
+.lewati {
+  position: absolute;
+  left: var(--space-4);
+  top: 0;
+  transform: translateY(-120%);
+  background: var(--color-sheet);
+  color: var(--color-ink);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-none);
+  z-index: 2;
+}
+
+.lewati:focus {
+  transform: none;
+}
+
+.lembar {
+  display: flex;
+  flex-direction: column;
+  width: min(70rem, calc(100% - var(--space-9)));
+  min-height: calc(100dvh - var(--space-9));
+  margin: var(--space-6) auto;
+  padding: var(--space-sheet-y) var(--space-sheet-x);
+  background: var(--color-sheet);
+  border-radius: var(--radius-sheet);
+  box-shadow: var(--shadow-sheet);
+}
+
+.kepala {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3) var(--space-6);
+}
+
+h1,
+.nama {
+  margin: 0;
+  color: var(--color-ink);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-display);
+  line-height: var(--line-height-display);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--font-size-display);
+}
+
+h1 a,
+.nama {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--duration-feedback) var(--ease-arrive), opacity var(--duration-feedback) linear;
+}
+
+h1 a:hover,
+.nama:hover {
+  opacity: 0.72;
+}
+
+h1 a:active,
+.nama:active {
+  opacity: 0.56;
+}
+
+.nama {
+  font-size: var(--font-size-mark);
+  letter-spacing: var(--letter-spacing-title);
+}
+
+nav {
+  display: flex;
+  gap: var(--space-5);
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-1);
+  color: var(--color-ink);
+  font-size: var(--font-size-nav);
+  text-decoration: none;
+  border-radius: var(--radius-none);
+  transition: color var(--duration-feedback) var(--ease-arrive), opacity var(--duration-feedback) linear;
+}
+
+nav a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+nav a:active {
+  opacity: 0.72;
+}
+
+.pengantar {
+  max-width: 34em;
+  margin: var(--space-4) 0 0;
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
+  letter-spacing: var(--letter-spacing-lead);
+  text-wrap: pretty;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.daftar {
+  margin-top: var(--space-section);
+  margin-bottom: var(--space-section-end);
+}
+
+.produk {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(15rem, 0.8fr);
+  gap: var(--space-5) var(--space-9);
+  margin-inline: calc(-1 * var(--space-sheet-x));
+  padding: var(--space-8) var(--space-sheet-x);
+  border-top: 1px solid var(--color-rule);
+  border-radius: var(--radius-none);
+  position: relative;
+  transition: background-color var(--duration-state) var(--ease-arrive);
+}
+
+.produk:has(.buka:hover),
+.produk:has(.buka:focus-visible) {
+  background: var(--color-hover);
+}
+
+.produk:has(.buka):focus-within {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.produk:has(.buka) .buka:focus-visible {
+  outline: none;
+}
+
+.produk-segera {
+  cursor: default;
+}
+
+.produk h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-title);
+  line-height: var(--line-height-title);
+  text-wrap: balance;
+}
+
+.produk p {
+  max-width: 38em;
+  margin: 0;
+}
+
+.register {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: none;
+  color: var(--color-accent);
+}
+
+.register-kosong {
+  color: var(--color-rule-strong);
+}
+
+/* The circle stays. The crosshairs slide into register once, on the first live title. */
+.produk:not(.produk-segera):first-child .register-jarum {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 1;
+  animation: daftar-register var(--duration-focal) var(--ease-arrive);
+}
+
+.produk-meta {
+  align-self: start;
+}
+
+.spesifikasi {
+  margin: 0;
+}
+
+.spesifikasi div {
+  display: grid;
+  grid-template-columns: 5.8rem minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.spesifikasi dt {
+  color: var(--color-secondary);
+  font-size: var(--font-size-label);
+}
+
+.spesifikasi dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.buka {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  margin-top: var(--space-5);
+  min-height: 2.75rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-radius: var(--radius-none);
+}
+
+.buka-aksi {
+  display: inline-block;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-action);
+  transition: transform var(--duration-feedback) var(--ease-arrive), opacity var(--duration-feedback) linear;
+}
+
+.buka:hover .buka-aksi,
+.buka:focus-visible .buka-aksi {
+  transform: translateX(3px);
+}
+
+.buka:active .buka-aksi {
+  transform: translateX(1px);
+  opacity: 0.72;
+}
+
+.buka-domain {
+  font-size: var(--font-size-label);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  overflow-wrap: anywhere;
+}
+
+.produk .buka::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.kosong {
+  margin: 0;
+  color: var(--color-secondary);
+}
+
+.halaman-hilang h1 {
+  margin-top: var(--space-error);
+  font-size: var(--font-size-headline);
+}
+
+.halaman-hilang .pengantar {
+  margin-top: var(--space-4);
+}
+
+.halaman-hilang .buka {
+  margin-top: var(--space-7);
+}
+
+.kolofon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2) var(--space-6);
+  margin-top: auto;
+  margin-inline: calc(-1 * var(--space-sheet-x));
+  padding: var(--space-5) var(--space-sheet-x) 0;
+  border-top: 1px solid var(--color-rule);
+  color: var(--color-secondary);
+  font-size: var(--font-size-label);
+}
+
+.kolofon p {
+  margin: 0;
+}
+
+.kolofon a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-ink);
+  border-radius: var(--radius-none);
+  transition: color var(--duration-feedback) var(--ease-arrive), opacity var(--duration-feedback) linear;
+}
+
+.kolofon a:hover {
+  color: var(--color-accent);
+}
+
+.kolofon a:active {
+  opacity: 0.72;
+}
+
+@keyframes daftar-register {
+  from {
+    transform: translate(3px, 3px);
+    opacity: 0.45;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .lembar {
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .produk {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .produk:not(.produk-segera):first-child .register-jarum {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .buka:hover .buka-aksi,
+  .buka:focus-visible .buka-aksi,
+  .buka:active .buka-aksi {
+    transform: none;
+  }
+}
+
+@media print {
+  body {
+    background: var(--color-sheet);
+  }
+
+  .lembar {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .lewati {
+    display: none;
+  }
+}

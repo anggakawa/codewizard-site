@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T06:06:38Z",
+  "title": "Design System: Codewizard",
+  "extensions": {
+    "colorMeta": {
+      "register-blue": {
+        "role": "primary",
+        "displayName": "Register Blue",
+        "canonical": "#0f4c6e",
+        "tonalRamp": ["#00132c", "#002c47", "#074769", "#2b6387", "#4f87ac", "#73acd3", "#99d3fb", "#c1f3ff"]
+      },
+      "carbon-ink": {
+        "role": "neutral",
+        "displayName": "Carbon Ink",
+        "canonical": "#1a1d21",
+        "tonalRamp": ["#0f1215", "#26292d", "#3f4347", "#5a5e63", "#7d8186", "#a1a5aa", "#c7cbd0", "#e8ebf0"]
+      },
+      "caption-ink": {
+        "role": "neutral",
+        "displayName": "Caption Ink",
+        "canonical": "#314556",
+        "tonalRamp": ["#05131f", "#1b2b38", "#314556", "#4b6072", "#6d8396", "#91a8bc", "#b6cee3", "#daeeff"]
+      },
+      "sheet": {
+        "role": "neutral",
+        "displayName": "Sheet",
+        "canonical": "#fbfbfc",
+        "tonalRamp": ["#111112", "#292929", "#424243", "#5d5d5e", "#808081", "#a4a4a5", "#cacacb", "#ebebec"]
+      },
+      "desk": {
+        "role": "neutral",
+        "displayName": "Desk",
+        "canonical": "#e4e7eb",
+        "tonalRamp": ["#101214", "#27292c", "#404346", "#5b5e61", "#7e8084", "#a2a5a9", "#c8cbcf", "#e9ebef"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#d5dbe3",
+        "tonalRamp": ["#0e1216", "#25292e", "#3e4349", "#595e65", "#7b8188", "#9fa5ad", "#c5cbd3", "#e6ecf3"]
+      },
+      "uninked": {
+        "role": "neutral",
+        "displayName": "Uninked",
+        "canonical": "#b7c0ca",
+        "tonalRamp": ["#0d1218", "#242a30", "#3c434b", "#575f67", "#79818a", "#9da6af", "#c2ccd6", "#e4ecf5"]
+      },
+      "row-wash": {
+        "role": "neutral",
+        "displayName": "Row Wash",
+        "canonical": "#f3f6f8",
+        "tonalRamp": ["#101213", "#27292a", "#404344", "#5b5e60", "#7e8182", "#a2a5a7", "#c8cbcd", "#e9ebed"]
+      },
+      "selection-wash": {
+        "role": "neutral",
+        "displayName": "Selection Wash",
+        "canonical": "#d3e3ee",
+        "tonalRamp": ["#091319", "#202a31", "#37444d", "#526069", "#74838c", "#98a7b1", "#bdcdd8", "#e0edf7"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The studio name on the home sheet." },
+      "headline": { "displayName": "Headline", "purpose": "The 404 title." },
+      "title": { "displayName": "Title", "purpose": "A product name." },
+      "body": { "displayName": "Body", "purpose": "Descriptions, within about 34–38em." },
+      "label": { "displayName": "Label", "purpose": "Spec labels, the domain, and the footer." }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 16px 40px rgba(22, 26, 32, 0.08)",
+        "purpose": "The paper sitting on the desk. Not used on rows, links, or the phone layout."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-arrive",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Deceleration for the register entrance and for hover feedback."
+      },
+      {
+        "name": "duration-feedback",
+        "value": "150ms",
+        "purpose": "Link and press acknowledgment."
+      },
+      {
+        "name": "duration-state",
+        "value": "180ms",
+        "purpose": "Row wash when a live product is hovered or focused."
+      },
+      {
+        "name": "duration-focal",
+        "value": "680ms",
+        "purpose": "The live register mark finding alignment. Once, on the first live title."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sheet", "value": "720px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Visit link",
+      "kind": "button",
+      "refersTo": "visit-link",
+      "description": "The only primary action: open the product on its subdomain.",
+      "html": "<a class=\"ds-visit\" href=\"https://chart.codewizard.id\"><span class=\"ds-visit-action\">Buka Chartwizard</span><span class=\"ds-visit-domain\">chart.codewizard.id</span></a>",
+      "css": ".ds-visit { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; min-height: 2.75rem; color: var(--color-accent, #0f4c6e); text-decoration: none; font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); } .ds-visit-action { display: inline-block; font-weight: 600; letter-spacing: -0.02em; transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms linear; } .ds-visit:hover .ds-visit-action, .ds-visit:focus-visible .ds-visit-action { transform: translateX(3px); } .ds-visit:active .ds-visit-action { transform: translateX(1px); opacity: 0.72; } .ds-visit-domain { font-size: 0.875rem; text-decoration: underline; text-underline-offset: 0.22em; } .ds-visit:focus-visible { outline: 2px solid var(--color-accent, #0f4c6e); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-visit:hover .ds-visit-action, .ds-visit:focus-visible .ds-visit-action, .ds-visit:active .ds-visit-action { transform: none; } }"
+    },
+    {
+      "name": "Product row",
+      "kind": "card",
+      "refersTo": "product-row",
+      "description": "An imprint entry: name and summary, then specs. Live rows wash on hover.",
+      "html": "<article class=\"ds-row\"><h2 class=\"ds-row-title\"><svg class=\"ds-mark\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"4.25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\"></circle><path d=\"M8 1.2v2.5M8 12.3v2.5M1.2 8h2.5M12.3 8h2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\"></path></svg>Chartwizard</h2><p class=\"ds-row-copy\">Aplikasi desktop untuk membuat grafik dan menyaring saham di Bursa Efek Indonesia (IDX/BEI).</p></article>",
+      "css": ".ds-row { background: var(--color-sheet, #fbfbfc); color: var(--color-ink, #1a1d21); border-top: 1px solid var(--color-rule, #d5dbe3); border-radius: 0; padding: 2.5rem 0; font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover { background: var(--color-hover, #f3f6f8); } .ds-row-title { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.75rem; font-size: 1.75rem; font-weight: 600; letter-spacing: -0.03em; } .ds-mark { width: 1.05rem; height: 1.05rem; color: var(--color-accent, #0f4c6e); } .ds-row-copy { margin: 0; max-width: 38em; line-height: 1.55; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Masthead links. Carbon at rest, register blue on hover.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Utama\"><a href=\"#daftar\">Produk</a><a href=\"#kolofon\">Kontak</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 1.25rem; font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); } .ds-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.25rem; color: var(--color-ink, #1a1d21); text-decoration: none; font-size: 0.9375rem; border-radius: 0; transition: color 150ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms linear; } .ds-nav a:hover { color: var(--color-accent, #0f4c6e); text-decoration: underline; text-underline-offset: 0.22em; } .ds-nav a:active { opacity: 0.72; } .ds-nav a:focus-visible { outline: 2px solid var(--color-accent, #0f4c6e); outline-offset: 3px; }"
+    },
+    {
+      "name": "Register mark",
+      "kind": "custom",
+      "refersTo": "product-row",
+      "description": "Live titles carry crosshairs. Coming soon is the circle alone, in the uninked color.",
+      "html": "<span class=\"ds-marks\"><svg class=\"ds-reg\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"4.25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\"></circle><path d=\"M8 1.2v2.5M8 12.3v2.5M1.2 8h2.5M12.3 8h2.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\"></path></svg><svg class=\"ds-reg ds-reg-empty\" viewBox=\"0 0 16 16\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"4.25\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\"></circle></svg></span>",
+      "css": ".ds-marks { display: flex; gap: 1rem; } .ds-reg { width: 1.05rem; height: 1.05rem; color: var(--color-accent, #0f4c6e); } .ds-reg-empty { color: var(--color-rule-strong, #b7c0ca); }"
+    },
+    {
+      "name": "Specification list",
+      "kind": "custom",
+      "refersTo": "product-row",
+      "description": "Platform, market, and price on the same imprint entry as the name.",
+      "html": "<dl class=\"ds-specs\"><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Bulanan</dt><dd>sekitar Rp19.000</dd></div><div><dt>Tahunan</dt><dd>sekitar Rp150.000</dd></div></dl>",
+      "css": ".ds-specs { margin: 0; font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); color: var(--color-ink, #1a1d21); } .ds-specs div { display: grid; grid-template-columns: 5.8rem minmax(0, 1fr); gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--color-rule, #d5dbe3); } .ds-specs dt { color: var(--color-secondary, #314556); font-size: 0.875rem; } .ds-specs dd { margin: 0; font-variant-numeric: tabular-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Daylight Imprint",
+    "overview": "Codewizard’s site is one sheet of paper on a cool desk, read in ordinary daylight. The studio name is the press name. Each app is a title in the imprint, with its place of publication, platform, and price on the same entry. Nothing here pretends to be a larger company, and the page does not borrow the voice of a startup hero or a card grid.\n\nThe sheet is square-cornered, set in one grotesque, and mostly quiet. Register blue is rare at rest: it marks the title that is actually in print, and the link that opens it. A title that is not ready is drawn with an empty circle and stays uninked. Motion does one job on arrival — the live mark finds its register — and after that only answers the pointer.",
+    "keyCharacteristics": [
+      "One sheet, wide margins, hairline rules, lots of open paper",
+      "Carbon ink on a cool white sheet, over a slightly darker desk",
+      "One accent, register blue, used sparingly",
+      "Schibsted Grotesk for every role",
+      "Square corners; the only curve is the drawn register mark",
+      "Bahasa Indonesia, short lines, no second language toggle"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "At rest, register blue appears only on the live title’s mark and its visit link, plus focus. Its rarity is the point.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Face Rule",
+        "body": "Do not add a serif, a monospace costume, or a second family for “technical” details.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Row Rule",
+        "body": "A product row does not float. Hover changes its wash, not its elevation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep new products as imprint rows fed by `products.js`, with the same fields: name, summary, specs, https link, and domain.",
+      "Do leave one uninked “Segera hadir” row until that product has a real subdomain.",
+      "Do keep copy visible without JavaScript. The script only replaces the same list.",
+      "Do keep `prefers-reduced-motion` spatial movement off, and keep color and opacity feedback on."
+    ],
+    "donts": [
+      "Don't add a second accent, a gradient, a filled pill, or a drop shadow on a row.",
+      "Don't round the sheet or turn products into icon-plus-heading tiles.",
+      "Don't set type in a monospace face to look technical.",
+      "Don't hide the register circle or the product names behind an entrance animation.",
+      "Don't imply this studio is CODE WIZARD INC or Code Wiz, and don't invent prices, platforms, or screenshots."
+    ]
+  }
+}

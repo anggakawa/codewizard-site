@@ -1,0 +1,8 @@
+# Agent harness installed by `npx impeccable install`. Not part of the site.
+.cursor/
+
+# Impeccable session caches
+.impeccable/questions/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/live/
