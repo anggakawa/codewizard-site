@@ -86,3 +86,45 @@
 
   root.replaceChildren(fragment);
 })();
+
+(function () {
+  "use strict";
+
+  var el = document.getElementById("kata");
+  if (!el) {
+    return;
+  }
+
+  var words = ["build", "deploy", "make it happen"];
+  var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var index = 0;
+  var timer = 0;
+
+  function showNext() {
+    el.classList.add("sembunyi");
+    window.setTimeout(function () {
+      index = (index + 1) % words.length;
+      el.textContent = words[index];
+      window.requestAnimationFrame(function () {
+        el.classList.remove("sembunyi");
+      });
+    }, 380);
+  }
+
+  function start() {
+    window.clearInterval(timer);
+    if (motion.matches) {
+      el.classList.remove("sembunyi");
+      el.textContent = "build, deploy, make it happen";
+      return;
+    }
+    el.textContent = words[0];
+    index = 0;
+    timer = window.setInterval(showNext, 2600);
+  }
+
+  if (motion.addEventListener) {
+    motion.addEventListener("change", start);
+  }
+  start();
+})();

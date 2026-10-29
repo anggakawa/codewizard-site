@@ -4,53 +4,41 @@
   "title": "Design System: Codewizard",
   "extensions": {
     "colorMeta": {
-      "night": {
-        "role": "neutral",
-        "displayName": "Night",
-        "canonical": "#0c0c0c",
-        "tonalRamp": ["#0c0c0c", "#1c1c1c", "#2c2c2c", "#454545", "#6e6e6e", "#9a9a9a", "#c8c8c8", "#f4f4f4"]
-      },
       "paper": {
         "role": "neutral",
         "displayName": "Paper",
-        "canonical": "#f6f6f6",
-        "tonalRamp": ["#141414", "#2a2a2a", "#454545", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#d8d8d8", "#f6f6f6"]
+        "canonical": "#ececeb",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#d5d5d3", "#ececeb"]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Ink",
-        "canonical": "#141414",
-        "tonalRamp": ["#141414", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#f7f7f7"]
-      },
-      "inverse": {
-        "role": "neutral",
-        "displayName": "Inverse",
-        "canonical": "#f4f4f4",
-        "tonalRamp": ["#141414", "#2a2a2a", "#454545", "#6e6e6e", "#969696", "#bdbdbd", "#dedede", "#f4f4f4"]
+        "canonical": "#1a1a1a",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#ececeb"]
       },
       "caption": {
         "role": "neutral",
         "displayName": "Caption",
-        "canonical": "#454545",
-        "tonalRamp": ["#141414", "#2a2a2a", "#454545", "#5e5e5e", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#f6f6f6"]
+        "canonical": "#4a4a4a",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#5e5e5e", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#ececeb"]
       },
-      "caption-inverse": {
+      "dust": {
         "role": "neutral",
-        "displayName": "Caption on night",
-        "canonical": "#c8c8c8",
-        "tonalRamp": ["#1a1a1a", "#333333", "#4d4d4d", "#6e6e6e", "#909090", "#c8c8c8", "#e0e0e0", "#f6f6f6"]
+        "displayName": "Dust",
+        "canonical": "#2a2a2a",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#404040", "#5c5c5c", "#7a7a7a", "#a3a3a3", "#d0d0d0", "#ececeb"]
       },
       "hairline": {
         "role": "neutral",
         "displayName": "Hairline",
-        "canonical": "#e3e3e3",
-        "tonalRamp": ["#141414", "#2c2c2c", "#454545", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#e3e3e3", "#f6f6f6"]
+        "canonical": "#d5d5d3",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#b5b5b5", "#d5d5d3", "#ececeb"]
       },
       "row-wash": {
         "role": "neutral",
         "displayName": "Row wash",
-        "canonical": "#ececec",
-        "tonalRamp": ["#141414", "#2a2a2a", "#454545", "#6a6a6a", "#8f8f8f", "#bdbdbd", "#ececec", "#f6f6f6"]
+        "canonical": "#e2e2e0",
+        "tonalRamp": ["#1a1a1a", "#2a2a2a", "#4a4a4a", "#6a6a6a", "#8f8f8f", "#bdbdbd", "#e2e2e0", "#ececeb"]
       }
     },
     "typographyMeta": {
@@ -74,8 +62,8 @@
       },
       {
         "name": "globe-spin",
-        "value": "0.11 rad/s",
-        "purpose": "One quiet rotation of the hero sphere. Stops when hidden, off-screen, or reduced motion."
+        "value": "0.18 rad/s",
+        "purpose": "A visible slow rotation of the hero sphere. Stops when hidden, off-screen, or reduced motion. Pixel dust shares the same loop."
       }
     ],
     "breakpoints": [
@@ -89,7 +77,7 @@
       "refersTo": "hero-link",
       "description": "Scrolls from the hero to the product list.",
       "html": "<a class=\"ds-hero-link\" href=\"#daftar\">Lihat produk</a>",
-      "css": ".ds-hero-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-ink-inverse, #f4f4f4); font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); font-weight: 600; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid currentColor; border-radius: 0; transition: opacity 150ms linear, transform 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-hero-link:hover, .ds-hero-link:focus-visible { transform: translateX(3px); } .ds-hero-link:active { opacity: 0.65; } .ds-hero-link:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-hero-link:hover, .ds-hero-link:focus-visible, .ds-hero-link:active { transform: none; } }"
+      "css": ".ds-hero-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-ink, #1a1a1a); font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); font-weight: 600; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid currentColor; border-radius: 0; transition: opacity 150ms linear, transform 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-hero-link:hover, .ds-hero-link:focus-visible { transform: translateX(3px); } .ds-hero-link:active { opacity: 0.65; } .ds-hero-link:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-hero-link:hover, .ds-hero-link:focus-visible, .ds-hero-link:active { transform: none; } }"
     },
     {
       "name": "Visit link",
@@ -113,7 +101,7 @@
       "refersTo": "nav-link",
       "description": "Wordmark and a single link to the product list.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Utama\"><a href=\"#daftar\">Produk</a></nav>",
-      "css": ".ds-nav { font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); } .ds-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.25rem; color: var(--color-ink-inverse, #f4f4f4); text-decoration: none; font-size: 0.9375rem; border-radius: 0; transition: opacity 150ms linear; } .ds-nav a:hover { text-decoration: underline; text-underline-offset: 0.22em; } .ds-nav a:active { opacity: 0.6; } .ds-nav a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }"
+      "css": ".ds-nav { font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); } .ds-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.25rem; color: var(--color-ink, #1a1a1a); text-decoration: none; font-size: 0.9375rem; border-radius: 0; transition: opacity 150ms linear; } .ds-nav a:hover { text-decoration: underline; text-underline-offset: 0.22em; } .ds-nav a:active { opacity: 0.6; } .ds-nav a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }"
     },
     {
       "name": "Specification list",
@@ -126,14 +114,15 @@
   ],
   "narrative": {
     "northStar": "The Quiet Globe",
-    "overview": "The first screen is a night field. Codewizard’s name sits in white on the left. On the right, a sphere of points and short links turns slowly, like a planet drawn as a network. Depth is only size and opacity. Nothing else moves on arrival.\n\nUnder that, the page returns to paper. Products are a list, not a grid of tiles. Chartwizard is the entry that is actually published: platform, market, price, and the link to its subdomain, in the same block. The footer is one copyright line. There is no contact block yet.\n\nThe palette is black, white, and gray. Corners stay square. Schibsted Grotesk does every job.",
+    "overview": "The first screen is gray paper. Codewizard’s name sits in soft black on the left, then a sentence and a phrase that swaps: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black and blurred slightly. Pixel dust drifts through the hero.\n\nThe product list continues on the same paper. Chartwizard is the entry that is actually published. The footer is one copyright line. There is no contact block yet.\n\nThe palette is paper, ink, and gray. Corners stay square. Schibsted Grotesk does every job.",
     "keyCharacteristics": [
-      "A full-viewport monochrome hero, then a paper product list",
-      "One wireframe globe, slow, paused off-screen and when the tab is hidden",
-      "White type on night, carbon type on paper",
+      "A full-viewport paper hero, then the product list on the same field",
+      "One soft-black wireframe globe, slightly blurred, paused off-screen and when the tab is hidden",
+      "Pixel dust in the hero, sparser over the type",
+      "One swapping phrase, with the first word in the HTML",
       "No chromatic accent",
       "Square corners, hairline rules, one type family",
-      "Bahasa Indonesia"
+      "Bahasa Indonesia for the product list; the hero line is English"
     ],
     "rules": [
       {
@@ -160,7 +149,7 @@
     ],
     "donts": [
       "Don't add a colored accent, a gradient fill, or a glow on the globe.",
-      "Don't put the product list on the night field.",
+      "Don't put a second field color behind the product list.",
       "Don't hide the hero sentence behind the animation or behind a failed script.",
       "Don't invent products, prices, or screenshots.",
       "Don't imply this studio is CODE WIZARD INC or Code Wiz."

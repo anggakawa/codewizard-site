@@ -111,21 +111,78 @@
     return { w: cssW, h: cssH };
   }
 
-  function draw(spin) {
+  var dust = [];
+  var dustW = 0;
+  var dustH = 0;
+
+  function ensureDust(w, h) {
+    if (dust.length && Math.abs(w - dustW) < 48 && Math.abs(h - dustH) < 48) {
+      return;
+    }
+    dustW = w;
+    dustH = h;
+    var n = w < 720 ? 70 : 120;
+    dust = [];
+    for (var i = 0; i < n; i++) {
+      dust.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        s: Math.random() < 0.7 ? 2 : 3,
+        a: 0.28 + Math.random() * 0.45,
+        vx: (Math.random() - 0.5) * 7,
+        vy: -(4 + Math.random() * 10),
+      });
+    }
+  }
+
+  function drawDust(w, h, dt) {
+    ensureDust(w, h);
+    var desktop = w >= 720;
+    for (var i = 0; i < dust.length; i++) {
+      var p = dust[i];
+      if (dt) {
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        if (p.y < -6) {
+          p.y = h + 4;
+          p.x = Math.random() * w;
+        }
+        if (p.x < -6) {
+          p.x = w + 4;
+        }
+        if (p.x > w + 6) {
+          p.x = -4;
+        }
+      }
+      var fade = 1;
+      if (desktop && p.x < w * 0.42) {
+        fade = 0.28;
+      }
+      if (!desktop && p.y > h * 0.55) {
+        fade = 0.22;
+      }
+      ctx.fillStyle = "rgba(36,36,36," + (p.a * fade).toFixed(3) + ")";
+      ctx.fillRect((p.x + 0.5) | 0, (p.y + 0.5) | 0, p.s, p.s);
+    }
+  }
+
+  function draw(spin, dt) {
     var size = resize();
     var w = size.w;
     var h = size.h;
     ctx.clearRect(0, 0, w, h);
+    drawDust(w, h, dt || 0);
     if (!points.length) {
       return;
     }
 
     var cos = Math.cos(spin);
     var sin = Math.sin(spin);
-    var radius = Math.min(w, h) * 0.44;
+    var desktop = w >= 720;
+    var radius = desktop ? Math.min(h, w * 0.55) * 0.42 : Math.min(w * 0.42, h * 0.2);
     var fov = 3.15;
-    var cx = w * 0.5;
-    var cy = h * 0.5;
+    var cx = desktop ? w * 0.72 : w * 0.5;
+    var cy = desktop ? h * 0.52 : h * 0.34;
 
     for (var i = 0; i < count; i++) {
       var p = points[i];
@@ -144,7 +201,7 @@
       var b = links[n + 1] * 3;
       var depth = (proj[a + 2] + proj[b + 2]) * 0.5;
       var front = (depth + 1) * 0.5;
-      ctx.strokeStyle = "rgba(255,255,255," + (0.05 + front * 0.28).toFixed(3) + ")";
+      ctx.strokeStyle = "rgba(26,26,26," + (0.14 + front * 0.5).toFixed(3) + ")";
       ctx.beginPath();
       ctx.moveTo(proj[a], proj[a + 1]);
       ctx.lineTo(proj[b], proj[b + 1]);
@@ -157,7 +214,7 @@
     for (var d = 0; d < count; d++) {
       var o = order[d] * 3;
       var front = (proj[o + 2] + 1) * 0.5;
-      ctx.fillStyle = "rgba(255,255,255," + (0.18 + front * 0.78).toFixed(3) + ")";
+      ctx.fillStyle = "rgba(18,18,18," + (0.28 + front * 0.68).toFixed(3) + ")";
       ctx.beginPath();
       ctx.arc(proj[o], proj[o + 1], 0.7 + front * 1.7, 0, Math.PI * 2);
       ctx.fill();
@@ -173,8 +230,8 @@
     }
     var dt = Math.min(0.05, (now - last) / 1000);
     last = now;
-    angle += dt * 0.11;
-    draw(angle);
+    angle += dt * 0.18;
+    draw(angle, dt);
     raf = window.requestAnimationFrame(frame);
   }
 
@@ -196,14 +253,14 @@
     reduce = motion.matches;
     if (reduce) {
       stop();
-      draw(0.85);
+      draw(0.85, 0);
       return;
     }
     start();
   }
 
   build();
-  draw(angle);
+  draw(angle, 0);
 
   if ("IntersectionObserver" in window) {
     var watcher = new IntersectionObserver(function (entries) {
@@ -231,7 +288,7 @@
       build();
     }
     if (reduce) {
-      draw(0.85);
+      draw(0.85, 0);
     }
   });
 

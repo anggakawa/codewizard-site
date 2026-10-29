@@ -40,16 +40,16 @@ Visitors open the apex domain in a browser, on a phone or a laptop, often in ord
 ## Brand Commitments
 
 - The name is Codewizard, one word. Do not restyle it as “Code Wizard” or reuse names, logos, or taglines from codewizard.com or codewiz.com.
-- Visual direction, revised by the owner: professional and monochrome. A hero with a slow wireframe globe, then the product list. Black, white, and gray only. No contact section yet. Recorded in `DESIGN.md` and `styles.css`.
+- Visual direction, revised by the owner: gray paper, a soft black wireframe globe with a little blur and pixel dust, then the product list. The hero line is “A small studio where we…” with build, deploy, and make it happen swapping one at a time. Black, white, and gray only. No contact section yet. Recorded in `DESIGN.md` and `styles.css`.
 - Proper title, description, and Open Graph tags. A simple original favicon.
 - Footer: copyright Codewizard only, until a contact block is requested.
 - The visual system is recorded in `DESIGN.md` and applied through custom properties in `styles.css`. Normative values live in those two files and must stay in step.
 
 ## Design System
 
-Monochrome. Night hero, paper list. Tokens are CSS custom properties.
+Monochrome. Paper field, soft black globe. Tokens are CSS custom properties.
 
-Color: `--color-night`, `--color-paper`, `--color-ink`, `--color-ink-inverse`, `--color-secondary`, `--color-secondary-inverse`, `--color-rule`, `--color-rule-inverse`, `--color-hover`, `--color-select`, `--color-select-inverse`. No hue token.
+Color: `--color-paper`, `--color-ink`, `--color-secondary`, `--color-rule`, `--color-hover`, `--color-select`, `--color-dust`. No hue token. Paper is the field. The sphere and the dust are soft black.
 
 Type: `--font-sans` (Schibsted Grotesk), `--font-size-display`, `--font-size-headline`, `--font-size-title`, `--font-size-lead`, `--font-size-body`, `--font-size-nav`, `--font-size-label`, `--font-size-mark`, `--font-weight-regular`, `--font-weight-semibold`, `--line-height-display`, `--line-height-title`, `--line-height-lead`, `--line-height-body`, `--letter-spacing-display`, `--letter-spacing-title`, `--letter-spacing-lead`, `--letter-spacing-action`.
 
@@ -57,7 +57,7 @@ Spacing: `--space-1` through `--space-10`, plus `--space-sheet-x` and `--space-s
 
 Radius: `--radius-none` is `0`.
 
-Motion: `--ease-arrive`, `--duration-feedback` (150ms), `--duration-state` (180ms). The globe in `globe.js` is the only ongoing animation. It pauses when the tab is hidden or the canvas is off-screen, caps device pixel ratio, and draws one still frame for `prefers-reduced-motion`. Link hovers may shift 3px; reduced motion drops that shift and keeps opacity changes. Copy stays in the HTML.
+Motion: `--ease-arrive`, `--duration-feedback` (150ms), `--duration-state` (180ms). The globe and the pixel dust in `globe.js` share one loop. It pauses when the tab is hidden or the canvas is off-screen, caps device pixel ratio, and draws one still frame for `prefers-reduced-motion`. The hero phrase in `site.js` swaps with opacity and transform; reduced motion shows the three phrases as one still line. The first phrase is in the HTML. Link hovers may shift 3px; reduced motion drops that shift and keeps opacity changes.
 
 ## Evidence on Hand
 

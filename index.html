@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Codewizard — Studio produk</title>
-    <meta name="description" content="Codewizard adalah studio produk kecil. Chartwizard, aplikasi grafik dan penyaring saham IDX/BEI untuk Windows, ada di chart.codewizard.id.">
+    <meta name="description" content="Codewizard. A small studio where we build, deploy, and make it happen. Chartwizard, aplikasi grafik dan penyaring saham IDX/BEI untuk Windows, ada di chart.codewizard.id.">
     <link rel="canonical" href="https://codewizard.id/">
-    <meta name="theme-color" content="#0c0c0c">
+    <meta name="theme-color" content="#ececeb">
     <meta name="color-scheme" content="light">
     <meta property="og:site_name" content="Codewizard">
     <meta property="og:title" content="Codewizard — Studio produk">
-    <meta property="og:description" content="Studio produk kecil. Chartwizard, aplikasi grafik dan penyaring saham IDX/BEI untuk Windows, ada di chart.codewizard.id.">
+    <meta property="og:description" content="A small studio where we build, deploy, and make it happen. Chartwizard ada di chart.codewizard.id.">
     <meta property="og:url" content="https://codewizard.id/">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="id_ID">
@@ -20,7 +20,7 @@
     <meta property="og:image:alt" content="Codewizard, studio produk kecil.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Codewizard — Studio produk">
-    <meta name="twitter:description" content="Studio produk kecil. Chartwizard, aplikasi grafik dan penyaring saham IDX/BEI untuk Windows, ada di chart.codewizard.id.">
+    <meta name="twitter:description" content="A small studio where we build, deploy, and make it happen. Chartwizard ada di chart.codewizard.id.">
     <meta name="twitter:image" content="https://codewizard.id/og.png">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
@@ -40,19 +40,22 @@
   <body>
     <a class="lewati" href="#daftar">Langsung ke daftar produk</a>
     <main>
-      <section class="hero" aria-labelledby="nama-studio">
+      <section class="hero" lang="en" aria-labelledby="nama-studio">
+        <canvas id="bola" class="bola" aria-hidden="true"></canvas>
         <header class="kepala">
           <a class="nama" href="/">Codewizard</a>
           <nav aria-label="Utama">
             <a href="#daftar">Produk</a>
           </nav>
         </header>
+        <div class="bola-ruang" aria-hidden="true"></div>
         <div class="hero-isi">
           <h1 id="nama-studio">Codewizard</h1>
-          <p class="pengantar">Studio produk kecil. Setiap aplikasi tinggal di subdomainnya sendiri.</p>
+          <p class="pengantar">A small studio where we…</p>
+          <p class="kata-baris"><span class="kata" id="kata">build</span></p>
+          <p class="sr">A small studio where we build, deploy, and make it happen.</p>
           <a class="hero-lanjut" href="#daftar">Lihat produk</a>
         </div>
-        <canvas id="bola" class="bola" aria-hidden="true"></canvas>
       </section>
       <section id="daftar" class="daftar lebar" aria-label="Daftar produk">
         <!-- Fallback tanpa JavaScript. Jaga agar sama dengan products.js. -->
