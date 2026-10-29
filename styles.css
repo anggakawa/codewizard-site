@@ -1,7 +1,7 @@
 @font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("fonts/schibsted-grotesk-latin.woff2") format("woff2");
-  font-weight: 400 900;
+  font-family: "Instrument Sans";
+  src: url("fonts/instrument-sans-latin.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
   font-display: swap;
 }
@@ -15,24 +15,25 @@
   --color-select: #d2d2d0;
   --color-dust: #2a2a2a;
 
-  --font-sans: "Schibsted Grotesk", "Segoe UI", sans-serif;
+  --font-sans: "Instrument Sans", "Segoe UI", sans-serif;
   --font-size-display: clamp(3.1rem, 7vw, 5.5rem);
   --font-size-headline: clamp(2.2rem, 6vw, 3.6rem);
   --font-size-title: clamp(1.8rem, 3vw, 2.4rem);
   --font-size-lead: clamp(1.2rem, 2vw, 1.45rem);
+  --font-size-phrase: clamp(1.7rem, 5vw, 3rem);
   --font-size-body: 1.0625rem;
   --font-size-nav: 0.9375rem;
   --font-size-label: 0.875rem;
   --font-size-mark: 1.05rem;
   --font-weight-regular: 400;
   --font-weight-semibold: 600;
-  --line-height-display: 0.94;
+  --line-height-display: 0.96;
   --line-height-title: 1.12;
-  --line-height-lead: 1.4;
+  --line-height-lead: 1.45;
   --line-height-body: 1.55;
-  --letter-spacing-display: -0.04em;
+  --letter-spacing-display: -0.045em;
   --letter-spacing-title: -0.03em;
-  --letter-spacing-lead: -0.02em;
+  --letter-spacing-lead: -0.015em;
   --letter-spacing-action: -0.02em;
 
   --space-1: 0.25rem;
@@ -234,7 +235,7 @@ h1 {
 .kata-baris {
   margin: var(--space-3) 0 0;
   overflow: hidden;
-  font-size: clamp(1.7rem, 5vw, 3rem);
+  font-size: var(--font-size-phrase);
   line-height: 1.15;
   min-height: 1.2em;
 }

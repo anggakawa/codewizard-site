@@ -11,31 +11,37 @@ colors:
   selection: "#d2d2d0"
 typography:
   display:
-    fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
+    fontFamily: "Instrument Sans, Segoe UI, sans-serif"
     fontSize: "clamp(3.1rem, 7vw, 5.5rem)"
     fontWeight: 600
-    lineHeight: 0.94
-    letterSpacing: "-0.04em"
+    lineHeight: 0.96
+    letterSpacing: "-0.045em"
   headline:
-    fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
+    fontFamily: "Instrument Sans, Segoe UI, sans-serif"
     fontSize: "clamp(2.2rem, 6vw, 3.6rem)"
     fontWeight: 600
-    lineHeight: 0.94
-    letterSpacing: "-0.04em"
+    lineHeight: 0.96
+    letterSpacing: "-0.045em"
   title:
-    fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
+    fontFamily: "Instrument Sans, Segoe UI, sans-serif"
     fontSize: "clamp(1.8rem, 3vw, 2.4rem)"
     fontWeight: 600
     lineHeight: 1.12
     letterSpacing: "-0.03em"
+  phrase:
+    fontFamily: "Instrument Sans, Segoe UI, sans-serif"
+    fontSize: "clamp(1.7rem, 5vw, 3rem)"
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: "-0.03em"
   body:
-    fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
+    fontFamily: "Instrument Sans, Segoe UI, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.55
-    letterSpacing: "-0.02em"
+    letterSpacing: "-0.015em"
   label:
-    fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
+    fontFamily: "Instrument Sans, Segoe UI, sans-serif"
     fontSize: "0.875rem"
     fontWeight: 400
     lineHeight: 1.55
@@ -96,7 +102,7 @@ The first screen is gray paper, a little off white. Codewizard’s name sits in 
 
 The product list continues on the same paper. Chartwizard is the entry that is actually published: platform, market, price, and the link to its subdomain, in the same block. The footer is one copyright line. There is no contact block yet.
 
-The palette is paper, ink, and gray. Corners stay square. Schibsted Grotesk does every job.
+The palette is paper, ink, and gray. Corners stay square. Instrument Sans does every job.
 
 **Key Characteristics:**
 
@@ -134,17 +140,18 @@ The globe is soft black at varying opacity, then blurred by less than a pixel. B
 
 ## Typography
 
-**Display Font:** Schibsted Grotesk (Segoe UI, sans-serif)
-**Body Font:** Schibsted Grotesk
+**Display Font:** Instrument Sans (Segoe UI, sans-serif)
+**Body Font:** Instrument Sans
 **Label/Mono Font:** none. Prices use the same face with tabular numbers.
 
-**Character:** One grotesque, weights 400 and 600. The hero name is large and tightly tracked. The sentence under it is caption gray. The swapping phrase is ink, smaller than the name, and stays on one line.
+**Character:** One modern grotesque, weights 400 and 600. The hero name is large and tightly tracked. The sentence under it is caption gray. The swapping phrase is ink, smaller than the name, and stays on one line.
 
 ### Hierarchy
 
-- **Display** (600, `clamp(3.1rem, 7vw, 5.5rem)`, line-height 0.94): “Codewizard” in the hero.
-- **Headline** (600, `clamp(2.2rem, 6vw, 3.6rem)`, line-height 0.94): The 404 title.
+- **Display** (600, `clamp(3.1rem, 7vw, 5.5rem)`, line-height 0.96): “Codewizard” in the hero.
+- **Headline** (600, `clamp(2.2rem, 6vw, 3.6rem)`, line-height 0.96): The 404 title.
 - **Title** (600, `clamp(1.8rem, 3vw, 2.4rem)`, line-height 1.12): A product name.
+- **Phrase** (600, `clamp(1.7rem, 5vw, 3rem)`, line-height 1.15): The swapping line under the hero sentence.
 - **Body** (400, `1.0625rem`, line-height 1.55): Product descriptions.
 - **Label** (400, `0.875rem`): Spec labels, domains, the footer.
 

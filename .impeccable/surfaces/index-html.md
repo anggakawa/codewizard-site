@@ -13,7 +13,7 @@ Mode: Persuade. Audience: someone opening codewizard.id to see which apps the st
 
 THESIS: A night hero carries the studio name beside a slow wireframe globe. The product list is a separate paper section under it. Refuses a bare text sheet and a colored tech glow.
 
-OWN-WORLD: Black, white, and gray only. Schibsted Grotesk. Square corners. The globe is points on a sphere with short links, depth shown by size and opacity. No chromatic accent.
+OWN-WORLD: Black, white, and gray only. Instrument Sans. Square corners. The globe is points on a sphere with short links, depth shown by size and opacity. No chromatic accent.
 
 STORY: The visitor sees Codewizard, then scrolls to Chartwizard and opens chart.codewizard.id. There is no contact block and no coming-soon row on the live list.
 

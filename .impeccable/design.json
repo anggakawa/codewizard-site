@@ -77,7 +77,7 @@
       "refersTo": "hero-link",
       "description": "Scrolls from the hero to the product list.",
       "html": "<a class=\"ds-hero-link\" href=\"#daftar\">Lihat produk</a>",
-      "css": ".ds-hero-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-ink, #1a1a1a); font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); font-weight: 600; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid currentColor; border-radius: 0; transition: opacity 150ms linear, transform 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-hero-link:hover, .ds-hero-link:focus-visible { transform: translateX(3px); } .ds-hero-link:active { opacity: 0.65; } .ds-hero-link:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-hero-link:hover, .ds-hero-link:focus-visible, .ds-hero-link:active { transform: none; } }"
+      "css": ".ds-hero-link { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-ink, #1a1a1a); font-family: var(--font-sans, 'Instrument Sans', sans-serif); font-weight: 600; letter-spacing: -0.02em; text-decoration: none; border-bottom: 1px solid currentColor; border-radius: 0; transition: opacity 150ms linear, transform 150ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-hero-link:hover, .ds-hero-link:focus-visible { transform: translateX(3px); } .ds-hero-link:active { opacity: 0.65; } .ds-hero-link:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-hero-link:hover, .ds-hero-link:focus-visible, .ds-hero-link:active { transform: none; } }"
     },
     {
       "name": "Visit link",
@@ -85,7 +85,7 @@
       "refersTo": "visit-link",
       "description": "Opens the product on its own subdomain.",
       "html": "<a class=\"ds-visit\" href=\"https://chart.codewizard.id\"><span class=\"ds-visit-action\">Buka Chartwizard</span><span class=\"ds-visit-domain\">chart.codewizard.id</span></a>",
-      "css": ".ds-visit { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; min-height: 2.75rem; color: var(--color-ink, #141414); font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); text-decoration: none; } .ds-visit-action { display: inline-block; font-weight: 600; letter-spacing: -0.02em; border-bottom: 1px solid currentColor; transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms linear; } .ds-visit:hover .ds-visit-action, .ds-visit:focus-visible .ds-visit-action { transform: translateX(3px); } .ds-visit:active .ds-visit-action { transform: translateX(1px); opacity: 0.65; } .ds-visit-domain { color: var(--color-secondary, #454545); font-size: 0.875rem; text-decoration: underline; text-underline-offset: 0.22em; } .ds-visit:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-visit:hover .ds-visit-action, .ds-visit:focus-visible .ds-visit-action, .ds-visit:active .ds-visit-action { transform: none; } }"
+      "css": ".ds-visit { display: flex; flex-direction: column; align-items: flex-start; gap: 0.25rem; min-height: 2.75rem; color: var(--color-ink, #141414); font-family: var(--font-sans, 'Instrument Sans', sans-serif); text-decoration: none; } .ds-visit-action { display: inline-block; font-weight: 600; letter-spacing: -0.02em; border-bottom: 1px solid currentColor; transition: transform 150ms cubic-bezier(0.16, 1, 0.3, 1), opacity 150ms linear; } .ds-visit:hover .ds-visit-action, .ds-visit:focus-visible .ds-visit-action { transform: translateX(3px); } .ds-visit:active .ds-visit-action { transform: translateX(1px); opacity: 0.65; } .ds-visit-domain { color: var(--color-secondary, #454545); font-size: 0.875rem; text-decoration: underline; text-underline-offset: 0.22em; } .ds-visit:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-visit:hover .ds-visit-action, .ds-visit:focus-visible .ds-visit-action, .ds-visit:active .ds-visit-action { transform: none; } }"
     },
     {
       "name": "Product row",
@@ -93,7 +93,7 @@
       "refersTo": "product-row",
       "description": "One published app: name, summary, and specs.",
       "html": "<article class=\"ds-row\"><h2>Chartwizard</h2><p>Aplikasi desktop untuk membuat grafik dan menyaring saham di Bursa Efek Indonesia (IDX/BEI).</p></article>",
-      "css": ".ds-row { background: var(--color-paper, #f6f6f6); color: var(--color-ink, #141414); border-top: 1px solid var(--color-rule, #e3e3e3); border-radius: 0; padding: 2.5rem 0; font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover { background: var(--color-hover, #ececec); } .ds-row h2 { margin: 0 0 0.75rem; font-size: 1.8rem; font-weight: 600; letter-spacing: -0.03em; } .ds-row p { margin: 0; max-width: 38em; line-height: 1.55; }"
+      "css": ".ds-row { background: var(--color-paper, #f6f6f6); color: var(--color-ink, #141414); border-top: 1px solid var(--color-rule, #e3e3e3); border-radius: 0; padding: 2.5rem 0; font-family: var(--font-sans, 'Instrument Sans', sans-serif); transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover { background: var(--color-hover, #ececec); } .ds-row h2 { margin: 0 0 0.75rem; font-size: 1.8rem; font-weight: 600; letter-spacing: -0.03em; } .ds-row p { margin: 0; max-width: 38em; line-height: 1.55; }"
     },
     {
       "name": "Navigation",
@@ -101,7 +101,7 @@
       "refersTo": "nav-link",
       "description": "Wordmark and a single link to the product list.",
       "html": "<nav class=\"ds-nav\" aria-label=\"Utama\"><a href=\"#daftar\">Produk</a></nav>",
-      "css": ".ds-nav { font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); } .ds-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.25rem; color: var(--color-ink, #1a1a1a); text-decoration: none; font-size: 0.9375rem; border-radius: 0; transition: opacity 150ms linear; } .ds-nav a:hover { text-decoration: underline; text-underline-offset: 0.22em; } .ds-nav a:active { opacity: 0.6; } .ds-nav a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }"
+      "css": ".ds-nav { font-family: var(--font-sans, 'Instrument Sans', sans-serif); } .ds-nav a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.5rem 0.25rem; color: var(--color-ink, #1a1a1a); text-decoration: none; font-size: 0.9375rem; border-radius: 0; transition: opacity 150ms linear; } .ds-nav a:hover { text-decoration: underline; text-underline-offset: 0.22em; } .ds-nav a:active { opacity: 0.6; } .ds-nav a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }"
     },
     {
       "name": "Specification list",
@@ -109,12 +109,12 @@
       "refersTo": "product-row",
       "description": "Platform, market, and price beside the product name.",
       "html": "<dl class=\"ds-specs\"><div><dt>Platform</dt><dd>Windows</dd></div><div><dt>Bulanan</dt><dd>sekitar Rp19.000</dd></div><div><dt>Tahunan</dt><dd>sekitar Rp150.000</dd></div></dl>",
-      "css": ".ds-specs { margin: 0; font-family: var(--font-sans, 'Schibsted Grotesk', sans-serif); color: var(--color-ink, #141414); } .ds-specs div { display: grid; grid-template-columns: 5.8rem minmax(0, 1fr); gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--color-rule, #e3e3e3); } .ds-specs dt { color: var(--color-secondary, #454545); font-size: 0.875rem; } .ds-specs dd { margin: 0; font-variant-numeric: tabular-nums; }"
+      "css": ".ds-specs { margin: 0; font-family: var(--font-sans, 'Instrument Sans', sans-serif); color: var(--color-ink, #141414); } .ds-specs div { display: grid; grid-template-columns: 5.8rem minmax(0, 1fr); gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--color-rule, #e3e3e3); } .ds-specs dt { color: var(--color-secondary, #454545); font-size: 0.875rem; } .ds-specs dd { margin: 0; font-variant-numeric: tabular-nums; }"
     }
   ],
   "narrative": {
     "northStar": "The Quiet Globe",
-    "overview": "The first screen is gray paper. Codewizard’s name sits in soft black on the left, then a sentence and a phrase that swaps: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black and blurred slightly. Pixel dust drifts through the hero.\n\nThe product list continues on the same paper. Chartwizard is the entry that is actually published. The footer is one copyright line. There is no contact block yet.\n\nThe palette is paper, ink, and gray. Corners stay square. Schibsted Grotesk does every job.",
+    "overview": "The first screen is gray paper. Codewizard’s name sits in soft black on the left, then a sentence and a phrase that swaps: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black and blurred slightly. Pixel dust drifts through the hero.\n\nThe product list continues on the same paper. Chartwizard is the entry that is actually published. The footer is one copyright line. There is no contact block yet.\n\nThe palette is paper, ink, and gray. Corners stay square. Instrument Sans does every job.",
     "keyCharacteristics": [
       "A full-viewport paper hero, then the product list on the same field",
       "One soft-black wireframe globe, slightly blurred, paused off-screen and when the tab is hidden",

@@ -51,7 +51,7 @@ Monochrome. Paper field, soft black globe. Tokens are CSS custom properties.
 
 Color: `--color-paper`, `--color-ink`, `--color-secondary`, `--color-rule`, `--color-hover`, `--color-select`, `--color-dust`. No hue token. Paper is the field. The sphere and the dust are soft black.
 
-Type: `--font-sans` (Schibsted Grotesk), `--font-size-display`, `--font-size-headline`, `--font-size-title`, `--font-size-lead`, `--font-size-body`, `--font-size-nav`, `--font-size-label`, `--font-size-mark`, `--font-weight-regular`, `--font-weight-semibold`, `--line-height-display`, `--line-height-title`, `--line-height-lead`, `--line-height-body`, `--letter-spacing-display`, `--letter-spacing-title`, `--letter-spacing-lead`, `--letter-spacing-action`.
+Type: `--font-sans` (Instrument Sans), `--font-size-display`, `--font-size-headline`, `--font-size-title`, `--font-size-lead`, `--font-size-phrase`, `--font-size-body`, `--font-size-nav`, `--font-size-label`, `--font-size-mark`, `--font-weight-regular`, `--font-weight-semibold`, `--line-height-display`, `--line-height-title`, `--line-height-lead`, `--line-height-body`, `--letter-spacing-display`, `--letter-spacing-title`, `--letter-spacing-lead`, `--letter-spacing-action`.
 
 Spacing: `--space-1` through `--space-10`, plus `--space-sheet-x` and `--space-section`.
 

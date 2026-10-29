@@ -45,5 +45,5 @@ Contoh objek:
 - `404.html` — halaman tidak ditemukan
 - `products.js` — satu-satunya daftar produk untuk peramban yang menjalankan skrip
 - `site.js` — menggambar kartu dari daftar itu
-- `styles.css`, `fonts/` — tampilan; huruf Schibsted Grotesk berlisensi OFL (`fonts/OFL.txt`)
+- `styles.css`, `fonts/` — tampilan; huruf Instrument Sans berlisensi OFL (`fonts/OFL.txt`)
 - `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`, `og.png` — ikon dan gambar pratinjau
