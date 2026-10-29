@@ -1,34 +1,36 @@
 ---
 name: Codewizard
-description: Daylight imprint sheet for a small product studio.
+description: Monochrome studio page with a slow wireframe globe.
 colors:
-  register-blue: "#0f4c6e"
-  carbon-ink: "#1a1d21"
-  caption-ink: "#314556"
-  sheet: "#fbfbfc"
-  desk: "#e4e7eb"
-  hairline: "#d5dbe3"
-  uninked: "#b7c0ca"
-  row-wash: "#f3f6f8"
-  selection-wash: "#d3e3ee"
+  night: "#0c0c0c"
+  paper: "#f6f6f6"
+  ink: "#141414"
+  inverse: "#f4f4f4"
+  caption: "#454545"
+  caption-inverse: "#c8c8c8"
+  hairline: "#e3e3e3"
+  hairline-inverse: "#2c2c2c"
+  row-wash: "#ececec"
+  selection: "#dedede"
+  selection-inverse: "#3a3a3a"
 typography:
   display:
     fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
-    fontSize: "clamp(2.4rem, 8vw, 4.5rem)"
+    fontSize: "clamp(3.1rem, 7vw, 5.5rem)"
     fontWeight: 600
-    lineHeight: 0.96
-    letterSpacing: "-0.035em"
+    lineHeight: 0.94
+    letterSpacing: "-0.04em"
   headline:
     fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
-    fontSize: "clamp(2.2rem, 6vw, 3.5rem)"
+    fontSize: "clamp(2.2rem, 6vw, 3.6rem)"
     fontWeight: 600
-    lineHeight: 0.96
-    letterSpacing: "-0.035em"
+    lineHeight: 0.94
+    letterSpacing: "-0.04em"
   title:
     fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
-    fontSize: "clamp(1.65rem, 3vw, 2.15rem)"
+    fontSize: "clamp(1.8rem, 3vw, 2.4rem)"
     fontWeight: 600
-    lineHeight: 1.15
+    lineHeight: 1.12
     letterSpacing: "-0.03em"
   body:
     fontFamily: "Schibsted Grotesk, Segoe UI, sans-serif"
@@ -44,7 +46,6 @@ typography:
     letterSpacing: "normal"
 rounded:
   none: "0"
-  sheet: "0"
 spacing:
   "1": "0.25rem"
   "2": "0.5rem"
@@ -55,167 +56,171 @@ spacing:
   "7": "2rem"
   "8": "2.5rem"
   "9": "3rem"
-  sheet-x: "clamp(1.25rem, 5vw, 4.5rem)"
-  sheet-y: "clamp(1.75rem, 5vw, 4.25rem)"
-  section: "clamp(3.25rem, 8vw, 6rem)"
+  "10": "4rem"
+  sheet-x: "clamp(1.25rem, 4vw, 3.5rem)"
+  section: "clamp(4rem, 8vw, 6.5rem)"
 components:
   visit-link:
-    textColor: "{colors.register-blue}"
+    textColor: "{colors.ink}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "0"
   visit-link-hover:
-    textColor: "{colors.register-blue}"
-  product-row:
-    backgroundColor: "{colors.sheet}"
-    textColor: "{colors.carbon-ink}"
+    textColor: "{colors.ink}"
+  hero-link:
+    textColor: "{colors.inverse}"
     typography: "{typography.body}"
     rounded: "{rounded.none}"
-    padding: "2.5rem clamp(1.25rem, 5vw, 4.5rem)"
+    padding: "0"
+  product-row:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    typography: "{typography.body}"
+    rounded: "{rounded.none}"
+    padding: "2.5rem 0"
   product-row-hover:
     backgroundColor: "{colors.row-wash}"
-    textColor: "{colors.carbon-ink}"
+    textColor: "{colors.ink}"
   nav-link:
-    textColor: "{colors.carbon-ink}"
+    textColor: "{colors.inverse}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "0.5rem 0.25rem"
   nav-link-hover:
-    textColor: "{colors.register-blue}"
+    textColor: "{colors.inverse}"
 ---
 
 # Design System: Codewizard
 
 ## Overview
 
-**Creative North Star: "The Daylight Imprint"**
+**Creative North Star: "The Quiet Globe"**
 
-Codewizard’s site is one sheet of paper on a cool desk, read in ordinary daylight. The studio name is the press name. Each app is a title in the imprint, with its place of publication, platform, and price on the same entry. Nothing here pretends to be a larger company, and the page does not borrow the voice of a startup hero or a card grid.
+The first screen is a night field. Codewizard’s name sits in white on the left. On the right, a sphere of points and short links turns slowly, like a planet drawn as a network. Depth is only size and opacity. Nothing else moves on arrival.
 
-The sheet is square-cornered, set in one grotesque, and mostly quiet. Register blue is rare at rest: it marks the title that is actually in print, and the link that opens it. A title that is not ready is drawn with an empty circle and stays uninked. Motion does one job on arrival — the live mark finds its register — and after that only answers the pointer.
+Under that, the page returns to paper. Products are a list, not a grid of tiles. Chartwizard is the entry that is actually published: platform, market, price, and the link to its subdomain, in the same block. The footer is one copyright line. There is no contact block yet.
+
+The palette is black, white, and gray. Corners stay square. Schibsted Grotesk does every job.
 
 **Key Characteristics:**
 
-- One sheet, wide margins, hairline rules, lots of open paper
-- Carbon ink on a cool white sheet, over a slightly darker desk
-- One accent, register blue, used sparingly
-- Schibsted Grotesk for every role
-- Square corners; the only curve is the drawn register mark
-- Bahasa Indonesia, short lines, no second language toggle
+- A full-viewport monochrome hero, then a paper product list
+- One wireframe globe, slow, paused off-screen and when the tab is hidden
+- White type on night, carbon type on paper
+- No chromatic accent
+- Square corners, hairline rules, one type family
+- Bahasa Indonesia
 
 ## Colors
 
-A cool daylight palette: paper, carbon, and one steel blue.
+Black, white, and the grays between them. Hue does not carry meaning.
 
 ### Primary
 
-- **Register Blue** (`#0f4c6e`, `--color-accent`): The live product’s register mark, the visit link, focus rings, and the text caret. Hover may borrow it for a moment. It is not a fill for large areas.
+There is no chromatic primary. Night (`#0c0c0c`, `--color-night`) is the hero field. Inverse ink (`#f4f4f4`, `--color-ink-inverse`) is the type and the globe on that field.
 
 ### Neutral
 
-- **Carbon Ink** (`#1a1d21`, `--color-ink`): Headings, body, and footer links at rest.
-- **Caption Ink** (`#314556`, `--color-secondary`): Specification labels, the coming-soon note, and footer text. Dark enough to read on the sheet.
-- **Sheet** (`#fbfbfc`, `--color-sheet`): The page surface.
-- **Desk** (`#e4e7eb`, `--color-desk`): The ground around the sheet on wide screens. Phones hold the sheet full-bleed, so the desk disappears.
-- **Hairline** (`#d5dbe3`, `--color-rule`): Rules between titles, under spec rows, and above the footer.
-- **Uninked** (`#b7c0ca`, `--color-rule-strong`): The empty register on a title that is not out yet. Decorative only; the words beside it stay in carbon or caption ink.
-- **Row Wash** (`#f3f6f8`, `--color-hover`): The live row when the pointer or keyboard is on it.
-- **Selection Wash** (`#d3e3ee`, `--color-select`): Text selection. `--color-shadow` is `rgba(22, 26, 32, 0.08)`, used only by the sheet shadow.
+- **Paper** (`#f6f6f6`, `--color-paper`): The product list and the 404 page.
+- **Ink** (`#141414`, `--color-ink`): Headings and body on paper. Focus rings use `currentColor`, so they flip with the field.
+- **Caption** (`#454545`, `--color-secondary`): Spec labels, the domain, the footer, and the 404 explanation.
+- **Caption on night** (`#c8c8c8`, `--color-secondary-inverse`): The hero sentence.
+- **Hairline** (`#e3e3e3`, `--color-rule`): Rules in the product list and above the footer.
+- **Hairline on night** (`#2c2c2c`, `--color-rule-inverse`): Reserved. The hero has no rules.
+- **Row wash** (`#ececec`, `--color-hover`): A live product row under the pointer or keyboard.
+- **Selection** (`#dedede` / `#3a3a3a`): Text selection on paper and on night.
+
+The globe is white at varying opacity. Back points are faint; front points are brighter and larger. That is depth, not a second color.
 
 ### Named Rules
 
-**The One Accent Rule.** At rest, register blue appears only on the live title’s mark and its visit link, plus focus. Its rarity is the point.
+**The Monochrome Rule.** Do not introduce a hue. Gray is the only secondary tone. A link is underlined, not recolored.
 
 ## Typography
 
-**Display Font:** Schibsted Grotesk (with Segoe UI, then sans-serif)
-**Body Font:** Schibsted Grotesk (same stack)
-**Label/Mono Font:** none. Addresses and prices use the same face, with tabular numbers on prices.
+**Display Font:** Schibsted Grotesk (Segoe UI, sans-serif)
+**Body Font:** Schibsted Grotesk
+**Label/Mono Font:** none. Prices use the same face with tabular numbers.
 
-**Character:** A contemporary newspaper grotesque. One family, two weights (400 and 600), tight display tracking, open body leading. The lead under the studio name uses `--font-size-lead` (`clamp(1.2rem, 2vw, 1.45rem)`) and stays within about 34em.
+**Character:** One grotesque, weights 400 and 600. The hero name is large and tightly tracked. The sentence under it stays near 28em and is set in caption-on-night, not a second family.
 
 ### Hierarchy
 
-- **Display** (600, `clamp(2.4rem, 8vw, 4.5rem)`, line-height 0.96): The studio name on the home sheet.
-- **Headline** (600, `clamp(2.2rem, 6vw, 3.5rem)`, line-height 0.96): The 404 title.
-- **Title** (600, `clamp(1.65rem, 3vw, 2.15rem)`, line-height 1.15): A product name.
-- **Body** (400, `1.0625rem`, line-height 1.55): Descriptions. Measure stays near 34–38em.
-- **Label** (400, `0.875rem`, line-height 1.55): Spec labels, the domain, the footer.
+- **Display** (600, `clamp(3.1rem, 7vw, 5.5rem)`, line-height 0.94): “Codewizard” in the hero.
+- **Headline** (600, `clamp(2.2rem, 6vw, 3.6rem)`, line-height 0.94): The 404 title.
+- **Title** (600, `clamp(1.8rem, 3vw, 2.4rem)`, line-height 1.12): A product name.
+- **Body** (400, `1.0625rem`, line-height 1.55): Product descriptions.
+- **Label** (400, `0.875rem`): Spec labels, domains, the footer.
 
 ### Named Rules
 
-**The One Face Rule.** Do not add a serif, a monospace costume, or a second family for “technical” details.
+**The One Face Rule.** Do not add a serif or a monospace costume.
 
 ## Layout
 
-The sheet is `min(70rem, 100% - 3rem)`, centered, with at least `1.5rem` of desk around it, and it is at least as tall as the viewport. Inside, padding is `--space-sheet-y` by `--space-sheet-x`. The masthead is a wrapping row: the name on the baseline, Produk and Kontak beside it. The catalog starts after `--space-section`. Each product is two columns from 721px up (story, then specs and the visit link) and one column below that. Rules run the full width of the sheet, including through the side padding. The footer sits at the bottom of the sheet when the list is short.
+The hero is `100svh`, two columns from 721px: copy on the left, the canvas on the right. The header sits over the hero: wordmark and “Produk”. On a phone the globe is the top of the hero and the name sits under it, still on night, so the sphere is in the first screen and the type does not cross it.
 
-Spacing steps `--space-1` through `--space-9` are 0.25rem apart, starting at 0.25rem. Fluid spaces (`sheet-x`, `sheet-y`, `section`) are for the margins that should breathe.
+The product list is paper, padded by `--space-section`, aligned to the same left edge as the hero copy (`--space-sheet-x`, or the inset that keeps a 76rem measure centered). Each product is two columns on a wide screen and one column on a phone. The footer is a single line under a hairline.
 
 ## Elevation & Depth
 
-Depth is mostly tonal. The desk is darker than the sheet; rules separate entries. One shadow exists, and only under the sheet on wide screens, offset downward: `--shadow-sheet` = `0 16px 40px var(--color-shadow)`. Phones drop the shadow because the sheet is the screen. Rows do not lift.
+No drop shadows. The night field against the paper field is the only large depth change. Inside the globe, nearer points are larger and more opaque. Product rows do not lift.
 
 ### Shadow Vocabulary
 
-- **Sheet** (`box-shadow: 0 16px 40px rgba(22, 26, 32, 0.08)`): The paper sitting on the desk. Not used on rows, links, or the phone layout.
+None.
 
 ### Named Rules
 
-**The Flat Row Rule.** A product row does not float. Hover changes its wash, not its elevation.
+**The Flat Row Rule.** Hover washes the row. It does not raise it.
 
 ## Shapes
 
-Corners are square: `--radius-none` and `--radius-sheet` are both `0`, and the sheet, rows, and links use them. The register mark is a drawn circle with crosshairs, not a rounded rectangle. The coming-soon mark is the circle alone.
+`--radius-none` is `0`. The sheet, rows, links, and focus rings are square. The only curves are the globe’s points and the links between them.
 
 ## Components
 
 ### Buttons
 
-There is no filled button. The visit link is the only primary action.
+There is no filled button.
 
-- **Shape:** square (radius 0).
-- **Primary:** Register blue text. The action line is weight 600; the domain under it is 0.875rem and underlined. Minimum height 2.75rem.
-- **Hover / Focus:** The action shifts 3px to the right. Pressing it settles to 1px and drops to opacity 0.72. The row behind it takes the row wash. Focus draws a 2px register-blue outline around the whole row.
-- **Secondary:** Text links in the masthead and footer. Carbon at rest, register blue on hover, opacity 0.72 when pressed. No fill.
+- **Hero link:** “Lihat produk”, white, a 1px underline, minimum height 2.75rem. Hover shifts it 3px right. Pressed, it fades to opacity 0.65. Reduced motion keeps the fade and drops the shift.
+- **Visit link:** On paper, carbon, same underline and shift. The domain sits under it in caption gray.
+- **Focus:** 2px `currentColor` outline.
 
 ### Cards / Containers
 
-- **Corner Style:** square.
-- **Background:** Sheet, row wash on hover only when the row is a link.
-- **Shadow Strategy:** none on the row. See the sheet shadow above.
-- **Border:** a hairline across the top. No side borders.
-- **Internal Padding:** `--space-8` (2.5rem) vertically, sheet padding horizontally.
-- **Coming soon:** same structure, empty register, no link, no wash.
+- **Corner style:** square.
+- **Background:** Paper. Row wash only when the row is a link and it is hovered or focused.
+- **Border:** A hairline on top.
+- **Padding:** `--space-8` vertically.
+- **Coming soon:** The renderer still accepts `status: "segera"` as a row without a link. The live list does not include one.
 
 ### Navigation
 
-- **Style:** two text links, Produk and Kontak, sharing the masthead baseline with the wordmark.
-- **Typography:** `--font-size-nav` (0.9375rem), carbon ink.
-- **States:** hover turns register blue and underlines; pressed fades to opacity 0.72; focus uses the global outline.
-- **Mobile:** the links wrap under the wordmark. Each link is at least 2.75rem tall.
+Wordmark plus “Produk”. On the hero they are inverse ink; on the 404 page they are carbon. Hover underlines. Pressed fades. Each link is at least 2.75rem tall. There is no contact link.
 
-### Register mark
+### Globe
 
-A 1.05rem circle. The live title adds crosshairs in register blue. On the first live title, those crosshairs start 3px low and to the right at opacity 0.45 and ease into place over 680ms (`--ease-arrive`). The circle does not move, and the words are visible throughout. Later live titles, if any, stay still. The coming-soon circle is uninked and does not animate.
+A canvas in the hero. Points sit on a tilted sphere and connect to a few nearby neighbors. It rotates about once a minute. Device pixel ratio is capped at 2, and at 1.5 below 720px. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains.
 
 ### Specification list
 
-A two-column definition list. The label is caption ink at 5.8rem; the value is carbon ink with tabular numbers. Rows are separated by hairlines.
+Label column 5.8rem in caption gray. Values in ink, tabular numbers, hairline between rows.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** keep new products as imprint rows fed by `products.js`, with the same fields: name, summary, specs, https link, and domain.
-- **Do** leave one uninked “Segera hadir” row until that product has a real subdomain.
-- **Do** keep copy visible without JavaScript. The script only replaces the same list.
-- **Do** keep `prefers-reduced-motion` spatial movement off, and keep color and opacity feedback on.
+- **Do** add a product in `products.js` and mirror the article in `index.html`.
+- **Do** keep the globe monochrome, slow, and out of the product list.
+- **Do** keep hero type off the sphere, especially on a phone.
+- **Do** leave the footer as a copyright line until a contact block is asked for.
 
 ### Don't:
 
-- **Don't** add a second accent, a gradient, a filled pill, or a drop shadow on a row.
-- **Don't** round the sheet or turn products into icon-plus-heading tiles.
-- **Don't** set type in a monospace face to look technical.
-- **Don't** hide the register circle or the product names behind an entrance animation.
-- **Don't** imply this studio is CODE WIZARD INC or Code Wiz, and don't invent prices, platforms, or screenshots.
+- **Don't** add a colored accent, a gradient fill, or a glow on the globe.
+- **Don't** put the product list on the night field.
+- **Don't** hide the hero sentence behind the animation or behind a failed script.
+- **Don't** invent products, prices, or screenshots.
+- **Don't** imply this studio is CODE WIZARD INC or Code Wiz.

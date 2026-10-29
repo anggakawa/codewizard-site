@@ -7,35 +7,6 @@
     return;
   }
 
-  function addRegister(parent, inked) {
-    var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg.setAttribute("class", inked ? "register" : "register register-kosong");
-    svg.setAttribute("viewBox", "0 0 16 16");
-    svg.setAttribute("aria-hidden", "true");
-
-    var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("cx", "8");
-    circle.setAttribute("cy", "8");
-    circle.setAttribute("r", "4.25");
-    circle.setAttribute("fill", "none");
-    circle.setAttribute("stroke", "currentColor");
-    circle.setAttribute("stroke-width", "1.25");
-    svg.appendChild(circle);
-
-    if (inked) {
-      var ticks = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      ticks.setAttribute("class", "register-jarum");
-      ticks.setAttribute("d", "M8 1.2v2.5M8 12.3v2.5M1.2 8h2.5M12.3 8h2.5");
-      ticks.setAttribute("fill", "none");
-      ticks.setAttribute("stroke", "currentColor");
-      ticks.setAttribute("stroke-width", "1.25");
-      ticks.setAttribute("stroke-linecap", "square");
-      svg.appendChild(ticks);
-    }
-
-    parent.appendChild(svg);
-  }
-
   var fragment = document.createDocumentFragment();
 
   products.forEach(function (product) {
@@ -54,10 +25,7 @@
     body.className = "produk-isi";
 
     var heading = document.createElement("h2");
-    addRegister(heading, !isSoon);
-    var name = document.createElement("span");
-    name.textContent = product.name;
-    heading.appendChild(name);
+    heading.textContent = product.name;
     body.appendChild(heading);
 
     if (typeof product.summary === "string" && product.summary !== "") {

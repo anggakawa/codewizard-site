@@ -31,33 +31,33 @@ Visitors open the apex domain in a browser, on a phone or a laptop, often in ord
 - Bahasa Indonesia is the page language. An English toggle was optional and is skipped so the page stays uncluttered.
 - Products render from one list (`products.js`). A no-JS fallback repeats those same entries in the HTML.
 - The first product is Chartwizard: a Windows desktop app for charting and screening IDX/BEI stocks, with pattern scanning, screeners, and sector analysis. Pro is about Rp19rb/month or Rp150rb/year, sold via Lynk. The card links to https://chart.codewizard.id.
-- One tasteful “Segera hadir” placeholder slot.
+- The live list is Chartwizard only. A `segera` status still renders a row without a link if one is added later. There is no coming-soon slot on the page right now.
 - `CNAME` contains exactly `codewizard.id`. A designed `404.html` is required.
 - Do not change anything related to chart.codewizard.id or the repository anggakawa/chartwizard-releases. Do not invent customers, testimonials, benchmarks, or features beyond the brief.
-- Contact in the footer is the GitHub account anggakawa (https://github.com/anggakawa). No public email was given; none is invented.
+- No contact section for now. The footer is the copyright line only.
 - Copyright line names Codewizard.
 
 ## Brand Commitments
 
 - The name is Codewizard, one word. Do not restyle it as “Code Wizard” or reuse names, logos, or taglines from codewizard.com or codewiz.com.
-- Visual direction pinned by the owner: light and minimal, a product-studio feel, lots of whitespace, clean typography, one restrained accent, responsive, fast, and suitable for good Lighthouse scores.
+- Visual direction, revised by the owner: professional and monochrome. A hero with a slow wireframe globe, then the product list. Black, white, and gray only. No contact section yet. Recorded in `DESIGN.md` and `styles.css`.
 - Proper title, description, and Open Graph tags. A simple original favicon.
-- Footer: contact, GitHub anggakawa, copyright Codewizard.
+- Footer: copyright Codewizard only, until a contact block is requested.
 - The visual system is recorded in `DESIGN.md` and applied through custom properties in `styles.css`. Normative values live in those two files and must stay in step.
 
 ## Design System
 
-Light, minimal, product-studio. The page is one daylight sheet with wide margins. Tokens are CSS custom properties. There is no dark theme.
+Monochrome. Night hero, paper list. Tokens are CSS custom properties.
 
-Color: `--color-desk`, `--color-sheet`, `--color-ink`, `--color-secondary`, `--color-rule`, `--color-rule-strong`, `--color-accent`, `--color-hover`, `--color-select`, `--color-shadow`.
+Color: `--color-night`, `--color-paper`, `--color-ink`, `--color-ink-inverse`, `--color-secondary`, `--color-secondary-inverse`, `--color-rule`, `--color-rule-inverse`, `--color-hover`, `--color-select`, `--color-select-inverse`. No hue token.
 
 Type: `--font-sans` (Schibsted Grotesk), `--font-size-display`, `--font-size-headline`, `--font-size-title`, `--font-size-lead`, `--font-size-body`, `--font-size-nav`, `--font-size-label`, `--font-size-mark`, `--font-weight-regular`, `--font-weight-semibold`, `--line-height-display`, `--line-height-title`, `--line-height-lead`, `--line-height-body`, `--letter-spacing-display`, `--letter-spacing-title`, `--letter-spacing-lead`, `--letter-spacing-action`.
 
-Spacing: `--space-1` through `--space-9`, plus `--space-sheet-x`, `--space-sheet-y`, `--space-section`, `--space-section-end`, `--space-error`.
+Spacing: `--space-1` through `--space-10`, plus `--space-sheet-x` and `--space-section`.
 
-Radius: `--radius-none` and `--radius-sheet`, both `0`. Corners stay square.
+Radius: `--radius-none` is `0`.
 
-Motion: `--ease-arrive`, `--duration-feedback` (150ms), `--duration-state` (180ms), `--duration-focal` (680ms). The focal moment is the live title’s register mark finding alignment. Cards and links only change color, opacity, or a few pixels of translation. `prefers-reduced-motion` drops the spatial movement and keeps color and opacity feedback. Copy stays visible without JavaScript.
+Motion: `--ease-arrive`, `--duration-feedback` (150ms), `--duration-state` (180ms). The globe in `globe.js` is the only ongoing animation. It pauses when the tab is hidden or the canvas is off-screen, caps device pixel ratio, and draws one still frame for `prefers-reduced-motion`. Link hovers may shift 3px; reduced motion drops that shift and keeps opacity changes. Copy stays in the HTML.
 
 ## Evidence on Hand
 

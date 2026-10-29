@@ -1,6 +1,7 @@
 /* Daftar produk Codewizard.
-   Tambah objek baru di atas entri status "segera", lalu salin kartu yang sama
-   ke index.html supaya halaman tetap utuh tanpa JavaScript. */
+   Tambah objek di array ini, lalu salin kartu yang sama ke index.html
+   supaya halaman tetap utuh tanpa JavaScript.
+   status "segera" menggambar baris tanpa tautan, bila suatu saat ada slot kosong. */
 window.CODEWIZARD_PRODUCTS = [
   {
     name: "Chartwizard",
@@ -17,11 +18,5 @@ window.CODEWIZARD_PRODUCTS = [
     href: "https://chart.codewizard.id",
     cta: "Buka Chartwizard",
     domain: "chart.codewizard.id",
-  },
-  {
-    name: "Segera hadir",
-    status: "segera",
-    summary: "Tempat ini disiapkan untuk produk berikutnya.",
-    note: "Belum ada subdomain.",
   },
 ];

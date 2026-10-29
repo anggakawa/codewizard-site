@@ -6,7 +6,7 @@
     <title>Codewizard — Studio produk</title>
     <meta name="description" content="Codewizard adalah studio produk kecil. Chartwizard, aplikasi grafik dan penyaring saham IDX/BEI untuk Windows, ada di chart.codewizard.id.">
     <link rel="canonical" href="https://codewizard.id/">
-    <meta name="theme-color" content="#fbfbfc">
+    <meta name="theme-color" content="#0c0c0c">
     <meta name="color-scheme" content="light">
     <meta property="og:site_name" content="Codewizard">
     <meta property="og:title" content="Codewizard — Studio produk">
@@ -33,85 +33,70 @@
         "@type": "Organization",
         "name": "Codewizard",
         "url": "https://codewizard.id/",
-        "description": "Studio produk kecil. Setiap aplikasi tinggal di subdomainnya sendiri.",
-        "sameAs": ["https://github.com/anggakawa"]
+        "description": "Studio produk kecil. Setiap aplikasi tinggal di subdomainnya sendiri."
       }
     </script>
   </head>
   <body>
     <a class="lewati" href="#daftar">Langsung ke daftar produk</a>
-    <div class="lembar">
-      <header class="kepala">
-        <h1><a href="/">Codewizard</a></h1>
-        <nav aria-label="Utama">
-          <a href="#daftar">Produk</a>
-          <a href="#kolofon">Kontak</a>
-        </nav>
-      </header>
-      <main>
-        <p class="pengantar">Studio produk kecil. Setiap aplikasi tinggal di subdomainnya sendiri.</p>
-        <section id="daftar" class="daftar" aria-label="Daftar produk">
-          <!-- Fallback tanpa JavaScript. Jaga agar sama dengan products.js. -->
-          <article class="produk">
-            <div class="produk-isi">
-              <h2>
-                <svg class="register" viewBox="0 0 16 16" aria-hidden="true">
-                  <circle cx="8" cy="8" r="4.25" fill="none" stroke="currentColor" stroke-width="1.25"></circle>
-                  <path class="register-jarum" d="M8 1.2v2.5M8 12.3v2.5M1.2 8h2.5M12.3 8h2.5" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="square"></path>
-                </svg><span>Chartwizard</span>
-              </h2>
-              <p>Aplikasi desktop untuk membuat grafik dan menyaring saham di Bursa Efek Indonesia (IDX/BEI). Ada pemindaian pola, screener, dan analisis sektor.</p>
-            </div>
-            <div class="produk-meta">
-              <dl class="spesifikasi">
-                <div>
-                  <dt>Platform</dt>
-                  <dd>Windows</dd>
-                </div>
-                <div>
-                  <dt>Pasar</dt>
-                  <dd>IDX/BEI</dd>
-                </div>
-                <div>
-                  <dt>Paket</dt>
-                  <dd>Pro, lewat Lynk</dd>
-                </div>
-                <div>
-                  <dt>Bulanan</dt>
-                  <dd>sekitar Rp19.000</dd>
-                </div>
-                <div>
-                  <dt>Tahunan</dt>
-                  <dd>sekitar Rp150.000</dd>
-                </div>
-              </dl>
-              <a class="buka" href="https://chart.codewizard.id">
-                <span class="buka-aksi">Buka Chartwizard</span>
-                <span class="buka-domain">chart.codewizard.id</span>
-              </a>
-            </div>
-          </article>
-          <article class="produk produk-segera">
-            <div class="produk-isi">
-              <h2>
-                <svg class="register register-kosong" viewBox="0 0 16 16" aria-hidden="true">
-                  <circle cx="8" cy="8" r="4.25" fill="none" stroke="currentColor" stroke-width="1.25"></circle>
-                </svg><span>Segera hadir</span>
-              </h2>
-              <p>Tempat ini disiapkan untuk produk berikutnya.</p>
-            </div>
-            <div class="produk-meta">
-              <p class="kosong">Belum ada subdomain.</p>
-            </div>
-          </article>
-        </section>
-      </main>
-      <footer id="kolofon" class="kolofon">
-        <p>Kontak lewat <a href="https://github.com/anggakawa">GitHub anggakawa</a>.</p>
-        <p>© 2026 Codewizard</p>
-      </footer>
-    </div>
+    <main>
+      <section class="hero" aria-labelledby="nama-studio">
+        <header class="kepala">
+          <a class="nama" href="/">Codewizard</a>
+          <nav aria-label="Utama">
+            <a href="#daftar">Produk</a>
+          </nav>
+        </header>
+        <div class="hero-isi">
+          <h1 id="nama-studio">Codewizard</h1>
+          <p class="pengantar">Studio produk kecil. Setiap aplikasi tinggal di subdomainnya sendiri.</p>
+          <a class="hero-lanjut" href="#daftar">Lihat produk</a>
+        </div>
+        <canvas id="bola" class="bola" aria-hidden="true"></canvas>
+      </section>
+      <section id="daftar" class="daftar lebar" aria-label="Daftar produk">
+        <!-- Fallback tanpa JavaScript. Jaga agar sama dengan products.js. -->
+        <article class="produk">
+          <div class="produk-isi">
+            <h2>Chartwizard</h2>
+            <p>Aplikasi desktop untuk membuat grafik dan menyaring saham di Bursa Efek Indonesia (IDX/BEI). Ada pemindaian pola, screener, dan analisis sektor.</p>
+          </div>
+          <div class="produk-meta">
+            <dl class="spesifikasi">
+              <div>
+                <dt>Platform</dt>
+                <dd>Windows</dd>
+              </div>
+              <div>
+                <dt>Pasar</dt>
+                <dd>IDX/BEI</dd>
+              </div>
+              <div>
+                <dt>Paket</dt>
+                <dd>Pro, lewat Lynk</dd>
+              </div>
+              <div>
+                <dt>Bulanan</dt>
+                <dd>sekitar Rp19.000</dd>
+              </div>
+              <div>
+                <dt>Tahunan</dt>
+                <dd>sekitar Rp150.000</dd>
+              </div>
+            </dl>
+            <a class="buka" href="https://chart.codewizard.id">
+              <span class="buka-aksi">Buka Chartwizard</span>
+              <span class="buka-domain">chart.codewizard.id</span>
+            </a>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="kolofon">
+      <p class="lebar">© 2026 Codewizard</p>
+    </footer>
     <script src="/products.js" defer></script>
     <script src="/site.js" defer></script>
+    <script src="/globe.js" defer></script>
   </body>
 </html>

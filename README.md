@@ -10,9 +10,9 @@ Sistem visualnya — warna, huruf, jarak, radius, dan gerak — ada di `DESIGN.m
 
 ## Menambah produk
 
-Daftar produk ada di `products.js`. Entri terakhir berstatus `segera` adalah slot “Segera hadir”.
+Daftar produk ada di `products.js`. Saat ini isinya hanya Chartwizard.
 
-1. Sisipkan objek baru **di atas** entri `segera`.
+1. Tambah objek baru di array.
 2. Salin pola `<article class="produk">` di `index.html` supaya pengunjung tanpa JavaScript melihat produk yang sama.
 3. Commit. Tidak perlu membangun ulang.
 
@@ -36,13 +36,12 @@ Contoh objek:
 }
 ```
 
-`href` harus diawali `https://`. Kartu `segera` tidak punya tautan: isi `name`, `summary`, dan `note`.
-
-Biarkan satu slot `segera` di akhir daftar sampai produk berikutnya benar-benar punya subdomain.
+`href` harus diawali `https://`. Objek `status: "segera"` tidak punya tautan: isi `name`, `summary`, dan `note`. Jangan menambahkannya sebelum produknya benar-benar diumumkan.
 
 ## Berkas
 
-- `index.html` — beranda, plus kartu cadangan bila JavaScript mati
+- `index.html` — beranda: hero, lalu daftar produk, plus kartu cadangan bila JavaScript mati
+- `globe.js` — bola garis di hero. Berhenti saat tab disembunyikan, saat keluar layar, dan saat pengunjung meminta gerak dikurangi
 - `404.html` — halaman tidak ditemukan
 - `products.js` — satu-satunya daftar produk untuk peramban yang menjalankan skrip
 - `site.js` — menggambar kartu dari daftar itu
