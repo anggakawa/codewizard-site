@@ -7,7 +7,7 @@ related_targets: []
 
 # Landing page
 
-Mode: Persuade. Audience: someone opening codewizard.id to see which apps the studio ships and where they live. Action: open Chartwizard. Proof: the real subdomain, Windows, IDX/BEI, and the Pro price. Constraint: monochrome, professional, a restrained spherical network in the hero, Bahasa Indonesia, static files.
+Mode: Persuade. Audience: someone opening codewizard.id to see which apps the studio ships and where they live. Action: open Chartwizard. Proof: the real subdomain, Windows and IDX/BEI. Constraint: monochrome, professional, a restrained spherical network in the hero, Bahasa Indonesia, static files.
 
 ## Direction contract
 

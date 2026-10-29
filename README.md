@@ -26,9 +26,6 @@ Contoh objek:
   specs: [
     { label: "Platform", value: "Windows" },
     { label: "Pasar", value: "IDX/BEI" },
-    { label: "Paket", value: "Pro, lewat Lynk" },
-    { label: "Bulanan", value: "sekitar Rp19.000" },
-    { label: "Tahunan", value: "sekitar Rp150.000" },
   ],
   href: "https://nama.codewizard.id",
   cta: "Buka Nama produk",
@@ -36,11 +33,14 @@ Contoh objek:
 }
 ```
 
+Tambahkan `visual: "chart"` bila baris itu memakai grafik lilin bergerak dari `chart.js`. Tanpa `visual`, barisnya tanpa gambar.
+
 `href` harus diawali `https://`. Objek `status: "segera"` tidak punya tautan: isi `name`, `summary`, dan `note`. Jangan menambahkannya sebelum produknya benar-benar diumumkan.
 
 ## Berkas
 
 - `index.html` — beranda: hero, lalu daftar produk, plus kartu cadangan bila JavaScript mati
+- `chart.js` — grafik lilin di baris Chartwizard. Berhenti saat keluar layar, saat tab disembunyikan, dan saat pengunjung meminta gerak dikurangi
 - `globe.js` — bola garis di hero. Berhenti saat tab disembunyikan, saat keluar layar, dan saat pengunjung meminta gerak dikurangi
 - `404.html` — halaman tidak ditemukan
 - `products.js` — satu-satunya daftar produk untuk peramban yang menjalankan skrip

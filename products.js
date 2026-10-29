@@ -1,7 +1,8 @@
 /* Daftar produk Codewizard.
    Tambah objek di array ini, lalu salin kartu yang sama ke index.html
    supaya halaman tetap utuh tanpa JavaScript.
-   status "segera" menggambar baris tanpa tautan, bila suatu saat ada slot kosong. */
+   status "segera" menggambar baris tanpa tautan, bila suatu saat ada slot kosong.
+   visual "chart" menambah grafik lilin bergerak di atas baris (chart.js). */
 window.CODEWIZARD_PRODUCTS = [
   {
     name: "Chartwizard",
@@ -11,10 +12,8 @@ window.CODEWIZARD_PRODUCTS = [
     specs: [
       { label: "Platform", value: "Windows" },
       { label: "Pasar", value: "IDX/BEI" },
-      { label: "Paket", value: "Pro, lewat Lynk" },
-      { label: "Bulanan", value: "sekitar Rp19.000" },
-      { label: "Tahunan", value: "sekitar Rp150.000" },
     ],
+    visual: "chart",
     href: "https://chart.codewizard.id",
     cta: "Buka Chartwizard",
     domain: "chart.codewizard.id",

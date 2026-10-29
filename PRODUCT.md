@@ -30,7 +30,7 @@ Visitors open the apex domain in a browser, on a phone or a laptop, often in ord
 
 - Bahasa Indonesia is the page language. An English toggle was optional and is skipped so the page stays uncluttered.
 - Products render from one list (`products.js`). A no-JS fallback repeats those same entries in the HTML.
-- The first product is Chartwizard: a Windows desktop app for charting and screening IDX/BEI stocks, with pattern scanning, screeners, and sector analysis. Pro is about Rp19rb/month or Rp150rb/year, sold via Lynk. The card links to https://chart.codewizard.id.
+- The first product is Chartwizard: a Windows desktop app for charting and screening IDX/BEI stocks, with pattern scanning, screeners, and sector analysis. Pro is about Rp19rb/month or Rp150rb/year, sold via Lynk; the owner asked (2026-10-29) to keep plan and prices off this page, so the card shows platform and market only. The card links to https://chart.codewizard.id.
 - The live list is Chartwizard only. A `segera` status still renders a row without a link if one is added later. There is no coming-soon slot on the page right now.
 - `CNAME` contains exactly `codewizard.id`. A designed `404.html` is required.
 - Do not change anything related to chart.codewizard.id or the repository anggakawa/chartwizard-releases. Do not invent customers, testimonials, benchmarks, or features beyond the brief.
@@ -40,7 +40,7 @@ Visitors open the apex domain in a browser, on a phone or a laptop, often in ord
 ## Brand Commitments
 
 - The name is Codewizard, one word. Do not restyle it as “Code Wizard” or reuse names, logos, or taglines from codewizard.com or codewiz.com.
-- Visual direction, revised by the owner: gray paper, a soft black wireframe globe with a little blur and pixel dust, then the product list. The hero line is “A small studio where we…” with build, deploy, and make it happen swapping one at a time. Black, white, and gray only. No contact section yet. Recorded in `DESIGN.md` and `styles.css`.
+- Visual direction, revised by the owner: almost-white paper (lightened from gray on 2026-10-29), a soft black wireframe globe with a little blur and pixel dust, then the product list. The hero line is “A small studio where we…” with build, deploy, and make it happen swapping one at a time. Black, white, and gray only. No contact section yet. Recorded in `DESIGN.md` and `styles.css`.
 - Proper title, description, and Open Graph tags. A simple original favicon.
 - Footer: copyright Codewizard only, until a contact block is requested.
 - The visual system is recorded in `DESIGN.md` and applied through custom properties in `styles.css`. Normative values live in those two files and must stay in step.
@@ -57,7 +57,7 @@ Spacing: `--space-1` through `--space-10`, plus `--space-sheet-x` and `--space-s
 
 Radius: `--radius-none` is `0`.
 
-Motion: `--ease-arrive`, `--duration-feedback` (150ms), `--duration-state` (180ms). The globe and the pixel dust in `globe.js` share one loop. It pauses when the tab is hidden or the canvas is off-screen, caps device pixel ratio, and draws one still frame for `prefers-reduced-motion`. The hero phrase in `site.js` swaps with opacity and transform; reduced motion shows the three phrases as one still line. The first phrase is in the HTML. Link hovers may shift 3px; reduced motion drops that shift and keeps opacity changes.
+Motion: `--ease-arrive`, `--ease-leave`, `--ease-swap`, `--duration-feedback` (150ms), `--duration-state` (180ms), `--duration-wash`, `--duration-wipe`, `--duration-entrance`, `--duration-reveal`. One load entrance for the hero and one scroll reveal for the list; details in `DESIGN.md`. The globe and the pixel dust in `globe.js` share one loop. It pauses when the tab is hidden or the canvas is off-screen, caps device pixel ratio, and draws one still frame for `prefers-reduced-motion`. The hero phrase in `site.js` swaps with opacity and transform; reduced motion shows the three phrases as one still line. The first phrase is in the HTML. Link hovers may shift 3px; reduced motion drops that shift and keeps opacity changes.
 
 ## Evidence on Hand
 
