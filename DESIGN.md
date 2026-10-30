@@ -209,7 +209,7 @@ Under “A small studio where we…”, the visible phrase is build, then deploy
 
 ### Globe
 
-A canvas behind the hero. Points sit on a tilted sphere and connect to a few nearby neighbors, drawn in soft black. On load the points start as scattered dust and gather into the sphere over about 2.4s (wall-clock time, so dropped frames do not stretch it), then the links draw out. A few signals run along front-facing links, a short ink stroke with a square head, and leave a fading ring when they arrive. The sphere leans toward a mouse pointer, drifts up as the hero scrolls away, and spins faster for a moment after a scroll. Pixel dust is small squares on the same canvas, drifting upward, thinner over the type. The canvas is blurred by 0.6px. The sphere turns at about 0.18 rad/s. Device pixel ratio is capped at 2, and at 1.5 below 720px. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains, including the first phrase.
+A canvas behind the hero. Points sit on a tilted sphere and connect to a few nearby neighbors, drawn in soft black. On load the points start as scattered dust and gather into the sphere over about 2.4s (wall-clock time, so dropped frames do not stretch it), then the links draw out. Under the mesh, a few wave bands (four on a wide screen, three on a phone) wrap the sphere like latitudes and turn with it: slow uneven swells with an occasional tall, narrow, rounded peak, taken from the logo's Sasirangan lines. They are seeded, so they keep one shape on every load, drawn at 0.9px in ink at lower opacity than the links, and they draw out along their length once the sphere has closed. A few signals run along front-facing links, a short ink stroke with a square head, and leave a fading ring when they arrive. The sphere leans toward a mouse pointer, drifts up as the hero scrolls away, and spins faster for a moment after a scroll. Pixel dust is small squares on the same canvas, drifting upward, thinner over the type. The canvas is blurred by 0.6px. The sphere turns at about 0.18 rad/s. Device pixel ratio is capped at 2, and at 1.5 below 720px. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains, including the first phrase.
 
 ### Chart band
 
@@ -223,12 +223,17 @@ Label column 5.8rem in caption gray. Values in ink, tabular numbers, hairline be
 
 One entrance and one reveal. On load the header fades in and the hero lines rise out of their masks, staggered over about 0.8s. The product list reveals once as it scrolls in: the hairline draws from the left, then the words and spec rows follow. Links share one underline that leaves to the right and returns from the left on hover. A product row washes in from the left under the pointer. The header gains a paper backdrop with a blur and a hairline once the page scrolls. `prefers-reduced-motion` turns all of this off and shows everything in place.
 
+### Logo and icons
+
+The emblem is an ink circle filled with parallel, organic wave lines with now and then a sharp, rounded peak, after the Sasirangan *gigi haruan* motif of Banjar cloth. It has no nodes. `brand/emblem.svg` is the master; `brand/icon.svg` is the simplified six-line icon for 16–127px. Both are ink `#1a1a1a` on no background. The favicons (`favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`) are the icon on paper. `og.png` is built from `brand/og.html`: the name, the sentence and the first phrase on the left, the emblem on the right. The header keeps the text wordmark; there is no emblem in the page UI yet.
+
 ## Do's and Don'ts
 
 ### Do:
 
 - **Do** add a product in `products.js` and mirror the article in `index.html`.
 - **Do** keep the globe monochrome, slow, and out of the product list.
+- **Do** keep the wave bands lighter than the mesh; the mesh is what reads first.
 - **Do** keep hero type off the sphere, especially on a phone.
 - **Do** leave the footer as a copyright line until a contact block is asked for.
 

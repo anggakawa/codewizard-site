@@ -51,6 +51,133 @@
   var tiltCos = Math.cos(tilt);
   var tiltSin = Math.sin(tilt);
 
+  // Wave accents: a few bands that wrap the sphere like latitudes, drawn from
+  // the emblem's Sasirangan lines. Slow, uneven swells with now and then a
+  // tall, narrow, rounded peak. Seeded, so the bands keep one shape on every
+  // load. They turn with the mesh and stay lighter than it.
+  var waves = [];
+  var waveProj = null;
+  var waveSteps = 0;
+
+  function seeded(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a = (a + 0x6d2b79f5) >>> 0;
+      var t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function buildWaves() {
+    var rand = seeded(58);
+    var bases = wide.matches ? [-0.62, -0.24, 0.14, 0.5] : [-0.42, 0.04, 0.46];
+    waveSteps = wide.matches ? 360 : 240;
+    waves = [];
+    for (var b = 0; b < bases.length; b++) {
+      var swell = [];
+      var freqs = [2, 3, 5];
+      for (var f = 0; f < freqs.length; f++) {
+        swell.push({ k: freqs[f], amp: (0.075 - f * 0.02) * (0.7 + rand() * 0.6), phase: rand() * Math.PI * 2 });
+      }
+      var peaks = [];
+      var peakCount = 2 + ((rand() * 2) | 0);
+      for (var q = 0; q < peakCount; q++) {
+        peaks.push({
+          at: ((q + rand() * 0.6) / peakCount) * Math.PI * 2,
+          height: 0.13 + rand() * 0.1,
+          width: 0.04 + rand() * 0.025,
+        });
+      }
+      var lean = (rand() - 0.5) * 0.24;
+      var leanCos = Math.cos(lean);
+      var leanSin = Math.sin(lean);
+      var line = new Float32Array(waveSteps * 3);
+      for (var i = 0; i < waveSteps; i++) {
+        var theta = (i / waveSteps) * Math.PI * 2;
+        var lat = bases[b];
+        for (var w = 0; w < swell.length; w++) {
+          lat += swell[w].amp * Math.sin(swell[w].k * theta + swell[w].phase);
+        }
+        for (var r = 0; r < peaks.length; r++) {
+          var d = theta - peaks[r].at;
+          d -= Math.round(d / (Math.PI * 2)) * Math.PI * 2;
+          // A faster rise than fall, with a round top.
+          var width = peaks[r].width * (d < 0 ? 0.8 : 1.25);
+          lat -= peaks[r].height * Math.exp(-(d * d) / (width * width));
+        }
+        var ring = Math.cos(lat);
+        var x = Math.cos(theta) * ring;
+        var y = Math.sin(lat);
+        var z = Math.sin(theta) * ring;
+        // A small lean of its own, so the bands are not quite parallel.
+        var x1 = x * leanCos - y * leanSin;
+        var y1 = x * leanSin + y * leanCos;
+        line[i * 3] = x1;
+        line[i * 3 + 1] = y1 * tiltCos - z * tiltSin;
+        line[i * 3 + 2] = y1 * tiltSin + z * tiltCos;
+      }
+      waves.push(line);
+    }
+    waveProj = new Float32Array(waveSteps * 3);
+  }
+
+  // Each band draws out along its length once the sphere has closed.
+  // Strokes are bucketed by depth, so a band costs a few paths a frame.
+  var waveBuckets = 6;
+
+  function drawWaves(cx, cy, radius, fov, cos, sin, pitchCos, pitchSin, reveal) {
+    if (!waves.length || reveal <= 0) {
+      return;
+    }
+    var shown = Math.min(waveSteps, Math.ceil(reveal * waveSteps));
+    var fade = Math.min(1, reveal * 1.6);
+    ctx.lineWidth = 0.9;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    for (var b = 0; b < waves.length; b++) {
+      var line = waves[b];
+      for (var i = 0; i < waveSteps; i++) {
+        var o = i * 3;
+        var x = line[o] * cos + line[o + 2] * sin;
+        var z0 = -line[o] * sin + line[o + 2] * cos;
+        var y = line[o + 1] * pitchCos - z0 * pitchSin;
+        var z = line[o + 1] * pitchSin + z0 * pitchCos;
+        var scale = fov / (fov - z);
+        waveProj[o] = cx + x * radius * scale;
+        waveProj[o + 1] = cy + y * radius * scale;
+        waveProj[o + 2] = z;
+      }
+      var last = shown >= waveSteps ? waveSteps : shown - 1;
+      for (var k = 0; k < waveBuckets; k++) {
+        var lo = k / waveBuckets;
+        var hi = (k + 1) / waveBuckets;
+        var front = (lo + hi) * 0.5;
+        ctx.strokeStyle = "rgba(26,26,26," + ((0.04 + front * front * 0.52) * fade).toFixed(3) + ")";
+        ctx.beginPath();
+        var open = false;
+        for (var s = 0; s < last; s++) {
+          var a = s * 3;
+          var c = ((s + 1) % waveSteps) * 3;
+          var depth = ((waveProj[a + 2] + waveProj[c + 2]) * 0.5 + 1) * 0.5;
+          if (depth < lo || depth >= hi + (k === waveBuckets - 1 ? 1 : 0)) {
+            open = false;
+            continue;
+          }
+          if (!open) {
+            ctx.moveTo(waveProj[a], waveProj[a + 1]);
+            open = true;
+          }
+          ctx.lineTo(waveProj[c], waveProj[c + 1]);
+        }
+        ctx.stroke();
+      }
+    }
+    ctx.lineCap = "butt";
+    ctx.lineJoin = "miter";
+  }
+
   function build() {
     count = wide.matches ? 148 : 88;
     var next = [];
@@ -135,6 +262,7 @@
     for (var n = 0; n < count; n++) {
       order[n] = n;
     }
+    buildWaves();
   }
 
   function resize() {
@@ -374,6 +502,9 @@
     if (entering && allSettled) {
       intro = 0;
     }
+
+    // Under the mesh, so the mesh stays the first thing you see.
+    drawWaves(cx, cy, radius, fov, cos, sin, pitchCos, pitchSin, reduce ? 1 : smooth(1.5, 3.4, clock));
 
     ctx.lineWidth = 1;
     for (var n = 0; n < links.length; n += 2) {
