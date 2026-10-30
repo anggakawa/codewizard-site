@@ -215,37 +215,115 @@
       return;
     }
 
-    var old = Array.prototype.slice.call(el.children);
-    var leaving = old.map(function (span, i) {
-      return span.animate(
-        [
-          { transform: "translateY(0)", opacity: 1 },
-          { transform: "translateY(-110%)", opacity: 0 },
-        ],
-        { duration: 380, delay: i * 18, easing: "cubic-bezier(0.7, 0, 0.84, 0)", fill: "forwards" }
-      ).finished;
-    });
-
-    Promise.all(leaving).then(function () {
-      if (run !== token) {
-        return;
-      }
+    glitch(words[(index + 1) % words.length], run, function () {
       index = (index + 1) % words.length;
-      var spans = letters(words[index]);
-      spans.forEach(function (span, i) {
-        span.animate(
-          [
-            { transform: "translateY(110%)", opacity: 0 },
-            { transform: "translateY(0)", opacity: 1 },
-          ],
-          { duration: 760, delay: i * 26, easing: "cubic-bezier(0.16, 1, 0.3, 1)", fill: "backwards" }
-        );
-      });
       mark(index);
       timer = window.setTimeout(function () {
         swap(run);
       }, hold);
     });
+  }
+
+  // The change is a short monochrome glitch: the old word jitters and two
+  // bands of it slip sideways, then the new word arrives as scrambled glyphs
+  // that settle left to right. Steps every ~45ms, so it reads as digital, not
+  // as easing. About 420ms in all. Ink and one grey; no colour split.
+  var GLYPHS = "#/\\<>_=+*01x";
+  var GLITCH = 420;
+  var SWAP_AT = 130;
+  var STEP = 45;
+
+  function glitch(word, run, done) {
+    var begin = 0;
+    var lastStep = -STEP;
+    var swapped = false;
+    var spans = null;
+    var slices = [makeSlice("kata-iris"), makeSlice("kata-iris kata-iris-abu")];
+
+    function makeSlice(cls) {
+      var s = document.createElement("span");
+      s.className = cls;
+      s.setAttribute("aria-hidden", "true");
+      return s;
+    }
+
+    function text() {
+      var t = "";
+      for (var i = 0; i < el.children.length; i++) {
+        if (el.children[i].className === "huruf") {
+          t += el.children[i].textContent;
+        }
+      }
+      return t;
+    }
+
+    function rand(a, b) {
+      return a + Math.random() * (b - a);
+    }
+
+    function tick(now) {
+      if (run !== token) {
+        cleanup();
+        return;
+      }
+      if (!begin) {
+        begin = now;
+      }
+      var t = now - begin;
+      if (t >= GLITCH) {
+        cleanup();
+        done();
+        return;
+      }
+      if (t - lastStep >= STEP) {
+        lastStep = t;
+        if (!swapped && t >= SWAP_AT) {
+          swapped = true;
+          spans = letters(word);
+        }
+        if (swapped) {
+          var span = GLITCH - SWAP_AT - 70;
+          for (var i = 0; i < spans.length; i++) {
+            var ch = word.charAt(i);
+            var settleAt = SWAP_AT + ((i + 1) / spans.length) * span;
+            spans[i].textContent = ch === " " || t >= settleAt ? ch : GLYPHS.charAt((Math.random() * GLYPHS.length) | 0);
+          }
+        }
+        var k = 1 - t / GLITCH;
+        el.style.transform = "translateX(" + (rand(-2.5, 2.5) * k).toFixed(1) + "px)";
+        var shown = text();
+        for (var s = 0; s < slices.length; s++) {
+          var sl = slices[s];
+          if (sl.parentNode !== el) {
+            el.appendChild(sl);
+          }
+          sl.textContent = shown;
+          var on = Math.random() < 0.8;
+          var top = rand(5, 75);
+          var height = rand(10, 26);
+          sl.style.opacity = on ? "1" : "0";
+          sl.style.clipPath = "inset(" + top.toFixed(0) + "% -12px " + Math.max(0, 100 - top - height).toFixed(0) + "% -12px)";
+          sl.style.transform = "translateX(" + (rand(3, 9) * k * (Math.random() < 0.5 ? -1 : 1)).toFixed(1) + "px)";
+        }
+      }
+      window.requestAnimationFrame(tick);
+    }
+
+    function cleanup() {
+      el.style.transform = "";
+      for (var s = 0; s < slices.length; s++) {
+        if (slices[s].parentNode) {
+          slices[s].parentNode.removeChild(slices[s]);
+        }
+      }
+      if (spans) {
+        for (var i = 0; i < spans.length; i++) {
+          spans[i].textContent = word.charAt(i);
+        }
+      }
+    }
+
+    window.requestAnimationFrame(tick);
   }
 
   function start() {

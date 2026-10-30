@@ -98,7 +98,7 @@ components:
 
 **Creative North Star: "The Quiet Globe"**
 
-The first screen is almost white, with the faintest warmth. Codewizard’s name sits in soft black on the left. Under it, one sentence, then a word that leaves and the next word arrives: build, deploy, make it happen. On the right, a sphere of points and short links turns, drawn in the same soft black, with a little blur. Small square specks drift through the hero.
+The first screen is almost white, with the faintest warmth. Codewizard’s name sits in soft black on the left. Under it, one sentence, then a word that leaves and the next word arrives: build, deploy, make it happen. On the right, a sphere of evenly spaced points and links turns, drawn in the same soft black, with a little blur. Small square specks drift through the hero.
 
 The product list continues on the same paper. Chartwizard is the entry that is actually published: platform, market, and the link to its subdomain, in the same block. Plan and prices are left to the product’s own site. The footer is one copyright line. There is no contact block yet.
 
@@ -132,7 +132,7 @@ There is no chromatic primary. Paper (`#fcfcfb`, `--color-paper`) is the field f
 - **Row wash** (`#f3f3f1`, `--color-hover`): A live product row under the pointer or keyboard.
 - **Selection** (`#e8e8e6`): Text selection.
 
-The globe is soft black at varying opacity, then blurred by less than a pixel. Back points are faint; front points are darker and larger. That is depth, not a second color.
+The globe is soft black at varying opacity and width, then blurred by less than a pixel. Back links and points are faint hairlines and specks; front ones are darker, thicker, and larger. That is depth, not a second color.
 
 ### Named Rules
 
@@ -205,11 +205,11 @@ Wordmark plus “Produk”, in ink on paper. Hover underlines. Pressed fades. Ea
 
 ### The swapping phrase
 
-Under “A small studio where we…”, the visible phrase is build, then deploy, then make it happen. Letters of the current phrase lift out of a mask one after another; the next phrase rises in the same way. Three 2px marks under it show which phrase is up and fill over the 2.8s it stays. “build” is in the HTML. Reduced motion shows “build, deploy, make it happen” as one still line and does not cycle. A visually hidden sentence carries the full line.
+Under “A small studio where we…”, the visible phrase is build, then deploy, then make it happen. The change is a short monochrome glitch, about 420ms: the old word jitters a few pixels and two bands of it slip sideways (one ink, one gray; each band has paper behind it so it reads as a slip, not a double), then the next phrase arrives as scrambled glyphs (`#/\<>_=+*01x`) that settle left to right. It steps every ~45ms so it reads as digital rather than eased. No color split. Three 2px marks under it show which phrase is up and fill over the 2.8s it stays. “build” is in the HTML. Reduced motion shows “build, deploy, make it happen” as one still line and does not cycle. A visually hidden sentence carries the full line.
 
 ### Globe
 
-A canvas behind the hero. Points sit on a tilted sphere and connect to a few nearby neighbors, drawn in soft black. On load the points start as scattered dust and gather into the sphere over about 2.4s (wall-clock time, so dropped frames do not stretch it), then the links draw out. A few signals run along front-facing links, a short ink stroke with a square head, and leave a fading ring when they arrive. The sphere leans toward a mouse pointer, drifts up as the hero scrolls away, and spins faster for a moment after a scroll. Pixel dust is small squares on the same canvas, drifting upward, thinner over the type. The canvas is blurred by 0.6px. The sphere turns at about 0.18 rad/s. Device pixel ratio is capped at 2, and at 1.5 below 720px. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains, including the first phrase.
+A canvas behind the hero. Points sit evenly on a tilted sphere (a Fibonacci spiral, offset so none sits on a pole) and are linked by its triangulation, the convex hull, so every link is about the same length and the mesh reads as a calm geodesic net, drawn in soft black. On load the points start as scattered dust and gather into the sphere over about 2.4s (wall-clock time, so dropped frames do not stretch it), then the links draw out. Among the mesh, a few wave bands (four on a wide screen, three on a phone) wrap the sphere like latitudes and turn with it: slow uneven swells with an occasional tall, narrow, rounded peak, taken from the logo's Sasirangan lines. They are seeded, so they keep one shape on every load, lighter than the links at every depth, and they draw out along their length once the sphere has closed. Links, waves, and points are sorted into eight depth layers and drawn back to front: the back of the sphere is 0.45px hairlines at about 5% opacity, the front about 0.95px at about 50%, and points grow from specks to 2px dots toward the viewer. One 0.75px hairline at about 11% marks the silhouette. A few signals run along front-facing links, a short stroke that fades toward its tail with a round head, easing in and out; the node a signal reaches swells briefly. There are no rings. The sphere leans toward a mouse pointer, drifts up as the hero scrolls away, and spins faster for a moment after a scroll. Pixel dust is small squares (1.5–2px, snapped to device pixels) on the same canvas, drifting upward, thinner over the type. The canvas is blurred by 0.3px. The sphere turns at about 0.18 rad/s. Device pixel ratio is capped at 2, and at 1.5 below 720px. The canvas size is read on resize, not every frame. The loop stops when the tab is hidden or the canvas leaves the screen. `prefers-reduced-motion` draws one still frame and does not start the loop. If the script fails, the hero type remains, including the first phrase.
 
 ### Chart band
 
@@ -223,12 +223,17 @@ Label column 5.8rem in caption gray. Values in ink, tabular numbers, hairline be
 
 One entrance and one reveal. On load the header fades in and the hero lines rise out of their masks, staggered over about 0.8s. The product list reveals once as it scrolls in: the hairline draws from the left, then the words and spec rows follow. Links share one underline that leaves to the right and returns from the left on hover. A product row washes in from the left under the pointer. The header gains a paper backdrop with a blur and a hairline once the page scrolls. `prefers-reduced-motion` turns all of this off and shows everything in place.
 
+### Logo and icons
+
+The emblem is an ink circle filled with parallel, organic wave lines with now and then a sharp, rounded peak, after the Sasirangan *gigi haruan* motif of Banjar cloth. It has no nodes. `brand/emblem.svg` is the master; `brand/icon.svg` is the simplified six-line icon for 16–127px. Both are ink `#1a1a1a` on no background. The favicons (`favicon.ico`, `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png`) are the icon on paper. `og.png` is built from `brand/og.html`: the name, the sentence and the first phrase on the left, the emblem on the right. The header keeps the text wordmark; there is no emblem in the page UI yet.
+
 ## Do's and Don'ts
 
 ### Do:
 
 - **Do** add a product in `products.js` and mirror the article in `index.html`.
 - **Do** keep the globe monochrome, slow, and out of the product list.
+- **Do** keep the wave bands lighter than the mesh; the mesh is what reads first.
 - **Do** keep hero type off the sphere, especially on a phone.
 - **Do** leave the footer as a copyright line until a contact block is asked for.
 

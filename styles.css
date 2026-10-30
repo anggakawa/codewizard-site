@@ -340,6 +340,24 @@ h1 {
   white-space: pre;
 }
 
+.kata {
+  position: relative;
+}
+
+/* A band of the word, shifted sideways during the glitch. The paper behind
+   it hides the band underneath, so it reads as a slip, not a double. */
+.kata-iris {
+  position: absolute;
+  inset: 0;
+  white-space: pre;
+  background: var(--color-paper);
+  pointer-events: none;
+}
+
+.kata-iris-abu {
+  color: var(--color-secondary);
+}
+
 /* Three marks under the phrase: which word is up, and how long it stays. */
 .jejak {
   display: flex;
@@ -429,7 +447,7 @@ html:not(.js) .jejak {
   height: 100%;
   display: block;
   pointer-events: none;
-  filter: blur(0.6px);
+  filter: blur(0.3px);
 }
 
 .bola-ruang {
